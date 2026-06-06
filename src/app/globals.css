@@ -8090,9 +8090,13 @@ footer.lp-footer-legacy {
   content: '';
   position: absolute;
   inset: 0;
-  background:
-    radial-gradient(ellipse 70% 60% at 88% 10%, oklch(78% 0.19 130 / 0.10) 0%, transparent 60%),
-    radial-gradient(ellipse 60% 50% at 0% 90%, oklch(18% 0.018 245) 0%, transparent 70%);
+  /* Soft top vignette — deepens the very top so the headline keeps
+     maximum contrast against the brighter mesh below. */
+  background: linear-gradient(
+    180deg,
+    oklch(9% 0.016 250 / 0.55) 0%,
+    transparent 28%
+  );
   pointer-events: none;
   z-index: -1;
 }
@@ -8744,20 +8748,50 @@ footer.lp-footer-legacy {
   overflow: hidden;
   z-index: -2;
   background:
-    /* Soft green floor wash, very wide ellipse, fades smoothly */
+    /* 1. Dominant horizon bloom — bottom-center, brand green, much
+       stronger than before so it actually reads as light, not haze. */
     radial-gradient(
-      ellipse 110% 70% at 50% 120%,
-      oklch(78% 0.19 130 / 0.35) 0%,
-      oklch(78% 0.19 130 / 0.20) 18%,
-      oklch(78% 0.19 130 / 0.10) 35%,
-      oklch(78% 0.19 130 / 0) 55%
+      ellipse 140% 80% at 50% 118%,
+      oklch(82% 0.21 130 / 0.62) 0%,
+      oklch(80% 0.20 130 / 0.36) 14%,
+      oklch(78% 0.19 130 / 0.18) 30%,
+      oklch(78% 0.19 130 / 0.06) 50%,
+      transparent 70%
     ),
-    /* Very subtle vertical gradient — top stays cleanly dark */
+    /* 2. Top-right cyan-green accent — shifts hue toward 168 so the
+       composition has two distinct light temperatures, not one. */
+    radial-gradient(
+      ellipse 52% 46% at 94% 2%,
+      oklch(80% 0.17 168 / 0.34) 0%,
+      oklch(78% 0.16 168 / 0.12) 30%,
+      transparent 56%
+    ),
+    /* 3. Mid-left green echo — breaks the symmetry of #1 + #2 and
+       prevents the gradient from looking like a single beam. */
+    radial-gradient(
+      ellipse 38% 50% at 4% 42%,
+      oklch(80% 0.20 130 / 0.22) 0%,
+      oklch(78% 0.19 130 / 0.07) 35%,
+      transparent 60%
+    ),
+    /* 4. Diagonal aurora sweep — faint band across the upper third,
+       crosses the headline area subtly to add lateral movement. */
+    linear-gradient(
+      108deg,
+      transparent 32%,
+      oklch(82% 0.18 145 / 0.06) 48%,
+      oklch(76% 0.16 175 / 0.08) 58%,
+      transparent 75%
+    ),
+    /* 5. Base — multi-stop linear with hue drift from blue ink at top
+       to green-tinted ink at bottom. Carries the dark surface beneath
+       all the bloom layers. */
     linear-gradient(
       180deg,
-      oklch(14% 0.014 245) 0%,
-      oklch(14% 0.014 245) 35%,
-      oklch(17% 0.018 145) 100%
+      oklch(11% 0.022 250) 0%,
+      oklch(13% 0.022 245) 28%,
+      oklch(14% 0.024 200) 55%,
+      oklch(16% 0.028 150) 100%
     );
 }
 
