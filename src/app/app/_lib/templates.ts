@@ -1,0 +1,377 @@
+import type { SignatureData } from "../_components/SignatureRenderer";
+
+export type TemplatePreset = {
+  id: string;
+  name: string;
+  group: "Editorial" | "Bold" | "Compact" | "Centered" | "Developer" | "Minimal" | "Layouts";
+  tag: string;
+  swatch: string; // visual cue color
+  preset: Partial<SignatureData>;
+};
+
+export const TEMPLATE_PRESETS: TemplatePreset[] = [
+  /* Editorial family */
+  {
+    id: "editorial-classic",
+    name: "Editorial · Classic",
+    group: "Editorial",
+    tag: "A1",
+    swatch: "#15140F",
+    preset: {
+      template: "editorial",
+      layout: "stacked",
+      accent: "#E84A29",
+      divColor: "#E84A29",
+      divThickness: 2,
+      fontFamily: "inter",
+      fontSize: 13,
+    },
+  },
+  {
+    id: "editorial-sage",
+    name: "Editorial · Sage",
+    group: "Editorial",
+    tag: "A2",
+    swatch: "#4A6B41",
+    preset: {
+      template: "editorial",
+      layout: "stacked",
+      accent: "#4A6B41",
+      divColor: "#4A6B41",
+      divThickness: 2,
+      fontFamily: "inter",
+      fontSize: 13,
+    },
+  },
+  {
+    id: "editorial-ink",
+    name: "Editorial · Ink Blue",
+    group: "Editorial",
+    tag: "A3",
+    swatch: "#1F3253",
+    preset: {
+      template: "editorial",
+      layout: "stacked",
+      accent: "#1F3253",
+      divColor: "#1F3253",
+      divThickness: 3,
+      fontFamily: "inter",
+      fontSize: 13,
+    },
+  },
+  {
+    id: "editorial-serif",
+    name: "Editorial · Serif",
+    group: "Editorial",
+    tag: "A4",
+    swatch: "#B89046",
+    preset: {
+      template: "editorial",
+      layout: "stacked",
+      accent: "#B89046",
+      divColor: "#B89046",
+      divThickness: 2,
+      fontFamily: "serif",
+      fontSize: 13,
+    },
+  },
+
+  /* Bold family */
+  {
+    id: "bold-coral",
+    name: "Bold · Coral",
+    group: "Bold",
+    tag: "B1",
+    swatch: "#E84A29",
+    preset: {
+      template: "bold",
+      layout: "stacked",
+      accent: "#E84A29",
+      divColor: "#E84A29",
+      divThickness: 2,
+      fontFamily: "inter",
+      fontSize: 13,
+    },
+  },
+  {
+    id: "bold-violet",
+    name: "Bold · Violet",
+    group: "Bold",
+    tag: "B2",
+    swatch: "#6B5CFF",
+    preset: {
+      template: "bold",
+      layout: "stacked",
+      accent: "#6B5CFF",
+      divColor: "#6B5CFF",
+      divThickness: 2,
+      fontFamily: "inter",
+      fontSize: 13,
+    },
+  },
+  {
+    id: "bold-ink",
+    name: "Bold · Ink",
+    group: "Bold",
+    tag: "B3",
+    swatch: "#15140F",
+    preset: {
+      template: "bold",
+      layout: "stacked",
+      accent: "#15140F",
+      divColor: "#15140F",
+      divThickness: 2,
+      fontFamily: "inter",
+      fontSize: 13,
+    },
+  },
+  {
+    id: "bold-teal",
+    name: "Bold · Teal",
+    group: "Bold",
+    tag: "B4",
+    swatch: "#00A39A",
+    preset: {
+      template: "bold",
+      layout: "stacked",
+      accent: "#00A39A",
+      divColor: "#00A39A",
+      divThickness: 2,
+      fontFamily: "inter",
+      fontSize: 13,
+    },
+  },
+
+  /* Compact family */
+  {
+    id: "compact-photo",
+    name: "Compact · Photo",
+    group: "Compact",
+    tag: "C1",
+    swatch: "#1F3253",
+    preset: {
+      template: "compact",
+      layout: "stacked",
+      accent: "#1F3253",
+      divColor: "#1F3253",
+      photoShape: "round",
+      fontFamily: "inter",
+      fontSize: 13,
+    },
+  },
+  {
+    id: "compact-square",
+    name: "Compact · Square Photo",
+    group: "Compact",
+    tag: "C2",
+    swatch: "#E84A29",
+    preset: {
+      template: "compact",
+      layout: "stacked",
+      accent: "#E84A29",
+      divColor: "#E84A29",
+      photoShape: "square",
+      fontFamily: "inter",
+      fontSize: 13,
+    },
+  },
+  {
+    id: "compact-sage",
+    name: "Compact · Sage",
+    group: "Compact",
+    tag: "C3",
+    swatch: "#4A6B41",
+    preset: {
+      template: "compact",
+      layout: "stacked",
+      accent: "#4A6B41",
+      divColor: "#4A6B41",
+      photoShape: "round",
+      fontFamily: "inter",
+      fontSize: 13,
+    },
+  },
+
+  /* Centered family */
+  {
+    id: "centered-avatar",
+    name: "Centered · Avatar",
+    group: "Centered",
+    tag: "D1",
+    swatch: "#E84A29",
+    preset: {
+      template: "centered",
+      layout: "stacked",
+      accent: "#E84A29",
+      divColor: "#E84A29",
+      photoShape: "round",
+      fontFamily: "inter",
+      fontSize: 13,
+    },
+  },
+  {
+    id: "centered-mono",
+    name: "Centered · Mono",
+    group: "Centered",
+    tag: "D2",
+    swatch: "#15140F",
+    preset: {
+      template: "centered",
+      layout: "stacked",
+      accent: "#15140F",
+      divColor: "#15140F",
+      fontFamily: "mono",
+      fontSize: 12,
+    },
+  },
+  {
+    id: "centered-serif",
+    name: "Centered · Serif",
+    group: "Centered",
+    tag: "D3",
+    swatch: "#B89046",
+    preset: {
+      template: "centered",
+      layout: "stacked",
+      accent: "#B89046",
+      divColor: "#B89046",
+      fontFamily: "serif",
+      fontSize: 14,
+    },
+  },
+
+  /* Developer family */
+  {
+    id: "dev-coral",
+    name: "Developer · Coral",
+    group: "Developer",
+    tag: "E1",
+    swatch: "#E84A29",
+    preset: {
+      template: "dev",
+      layout: "stacked",
+      accent: "#E84A29",
+      divColor: "#E84A29",
+      fontFamily: "mono",
+      fontSize: 12,
+    },
+  },
+  {
+    id: "dev-teal",
+    name: "Developer · Teal",
+    group: "Developer",
+    tag: "E2",
+    swatch: "#00A39A",
+    preset: {
+      template: "dev",
+      layout: "stacked",
+      accent: "#00A39A",
+      divColor: "#00A39A",
+      fontFamily: "mono",
+      fontSize: 12,
+    },
+  },
+  {
+    id: "dev-violet",
+    name: "Developer · Violet",
+    group: "Developer",
+    tag: "E3",
+    swatch: "#6B5CFF",
+    preset: {
+      template: "dev",
+      layout: "stacked",
+      accent: "#6B5CFF",
+      divColor: "#6B5CFF",
+      fontFamily: "mono",
+      fontSize: 12,
+    },
+  },
+
+  /* Minimal */
+  {
+    id: "minimal-ink",
+    name: "Minimal · Ink",
+    group: "Minimal",
+    tag: "F1",
+    swatch: "#15140F",
+    preset: {
+      template: "minimal",
+      layout: "stacked",
+      accent: "#15140F",
+      divColor: "#15140F",
+      fontFamily: "inter",
+      fontSize: 13,
+    },
+  },
+  {
+    id: "minimal-coral",
+    name: "Minimal · Coral",
+    group: "Minimal",
+    tag: "F2",
+    swatch: "#E84A29",
+    preset: {
+      template: "minimal",
+      layout: "stacked",
+      accent: "#E84A29",
+      divColor: "#E84A29",
+      fontFamily: "inter",
+      fontSize: 13,
+    },
+  },
+
+  /* Layout variants — same core style, different arrangement */
+  {
+    id: "sidebar-photo",
+    name: "Sidebar · Photo rail",
+    group: "Layouts",
+    tag: "L1",
+    swatch: "#1F3253",
+    preset: {
+      template: "minimal",
+      layout: "sidebar",
+      accent: "#1F3253",
+      divColor: "#1F3253",
+      photoShape: "round",
+      divThickness: 2,
+      fontFamily: "inter",
+      fontSize: 13,
+    },
+  },
+  {
+    id: "photo-right-card",
+    name: "Photo · Right card",
+    group: "Layouts",
+    tag: "L2",
+    swatch: "#4A6B41",
+    preset: {
+      template: "minimal",
+      layout: "photo-right",
+      accent: "#4A6B41",
+      divColor: "#4A6B41",
+      photoShape: "round",
+      divThickness: 2,
+      fontFamily: "inter",
+      fontSize: 13,
+    },
+  },
+  {
+    id: "two-col-pro",
+    name: "Two column · Pro",
+    group: "Layouts",
+    tag: "L3",
+    swatch: "#6B5CFF",
+    preset: {
+      template: "editorial",
+      layout: "two-col",
+      accent: "#6B5CFF",
+      divColor: "#6B5CFF",
+      divThickness: 2,
+      fontFamily: "inter",
+      fontSize: 13,
+    },
+  },
+];
+
+export function findTemplate(id: string): TemplatePreset | undefined {
+  return TEMPLATE_PRESETS.find((t) => t.id === id);
+}
