@@ -8037,7 +8037,7 @@ footer.lp-footer-legacy {
   gap: 8px;
   padding: 6px 14px 6px 12px;
   border-radius: 100px;
-  font-size: 13px;
+  font-size: 14px;
   font-weight: 600;
   letter-spacing: -0.005em;
   line-height: 1;
@@ -10036,8 +10036,8 @@ footer.lp-footer-legacy {
 }
 .lp-pill-ico svg {
   display: block;
-  width: 14px;
-  height: 14px;
+  width: 15px;
+  height: 15px;
 }
 .lp-pill-dark .lp-pill-ico {
   color: var(--bg);
