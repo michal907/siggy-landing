@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 import { Inter, JetBrains_Mono, Bricolage_Grotesque } from "next/font/google";
 import "./globals.css";
-import { AnnotationEditor } from "./_components/AnnotationEditor";
+import { Studio } from "./_components/Studio";
 import { Analytics } from '@vercel/analytics/next';
 
 const inter = Inter({
@@ -79,7 +79,7 @@ export default function RootLayout({
     >
       <body>
         {children}
-        <AnnotationEditor />
+        <Studio />
         <Analytics />
       </body>
     </html>
