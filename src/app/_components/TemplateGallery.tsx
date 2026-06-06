@@ -6,6 +6,7 @@ import {
   XLogo,
   InstagramLogo,
   GithubLogo,
+  YoutubeLogo,
   Calendar,
   Lightning,
   SquaresFour,
@@ -14,12 +15,14 @@ import {
 const APP_HREF = "/app";
 
 /* ────────────────────────────────────────────────────────────────
-   TemplateGallery — 8 fully-built signatures in a bento grid.
-   Conversion-critical: every card looks like a real, polished
-   signature an actual professional would use. Variety on every
-   axis (surface, layout, typography, photo/no-photo, with/without
-   social, with/without CTA) so visitors find one they identify
-   with quickly.
+   TemplateGallery — 8 signatures modeled after real-world templates
+   from HubSpot, WiseStamp, and Signature Hound. Every signature is
+   rendered with email-safe font stacks ONLY (Helvetica, Arial,
+   Georgia, Verdana, Courier New, Times) so what visitors see in
+   this gallery is exactly what they'd get pasted into Gmail or
+   Outlook. No web fonts. No flex tricks that break in Outlook
+   desktop. Real-feeling names, real-feeling companies, real-feeling
+   contact details.
    ──────────────────────────────────────────────────────────────── */
 
 export function TemplateGallery() {
@@ -38,42 +41,42 @@ export function TemplateGallery() {
           <span className="lp-accent">Yours in two minutes.</span>
         </h2>
         <p className="lp-section-sub">
-          Hand-built for the kinds of professionals we&apos;ve actually met. Editorial for writers,
-          mono for engineers, bold for sales, minimal for execs. Pick one, change your details,
-          paste it where your sign-off used to live.
+          Eight here, twenty-four more inside. Built with the fonts every email
+          client actually renders, so what you see is exactly what your reply
+          will look like in Gmail, Outlook, and Apple Mail.
         </p>
       </div>
 
       <div className="container">
         <div className="lp-gallery-grid">
-          {/* Row 1 — 5+4+3 */}
-          <GalleryItem num="01" name="Editorial Classic" col={5} surface="paper">
-            <EditorialSignature />
+          {/* Row 1 — 5 + 4 + 3 */}
+          <GalleryItem num="01" name="Classic Pro" col={5} surface="paper">
+            <ClassicProSignature />
           </GalleryItem>
-          <GalleryItem num="02" name="Developer Mono" col={4} surface="ink">
-            <MonoSignature />
+          <GalleryItem num="02" name="Developer Terminal" col={4} surface="ink">
+            <DeveloperSignature />
           </GalleryItem>
-          <GalleryItem num="03" name="Minimal Quiet" col={3} surface="paper">
-            <MinimalSignature />
+          <GalleryItem num="03" name="Minimalist Executive" col={3} surface="paper">
+            <MinimalistSignature />
           </GalleryItem>
 
-          {/* Row 2 — 4+4+4 */}
-          <GalleryItem num="04" name="Centered Card" col={4} surface="warm">
-            <CenteredSignature />
+          {/* Row 2 — 4 + 4 + 4 */}
+          <GalleryItem num="04" name="Counsel Centered" col={4} surface="warm">
+            <CounselSignature />
           </GalleryItem>
-          <GalleryItem num="05" name="Bold Identity" col={4} surface="ink">
-            <BoldSignature />
+          <GalleryItem num="05" name="Bold Realtor" col={4} surface="ink">
+            <BoldRealtorSignature />
           </GalleryItem>
-          <GalleryItem num="06" name="Compact Profile" col={4} surface="paper">
+          <GalleryItem num="06" name="Compact Operator" col={4} surface="paper">
             <CompactSignature />
           </GalleryItem>
 
-          {/* Row 3 — 6+6 */}
-          <GalleryItem num="07" name="Conversion CTA" col={6} surface="warm">
-            <CtaSignature />
+          {/* Row 3 — 6 + 6 */}
+          <GalleryItem num="07" name="Sales CTA" col={6} surface="warm">
+            <SalesCtaSignature />
           </GalleryItem>
-          <GalleryItem num="08" name="Branded Banner" col={6} surface="paper">
-            <BannerSignature />
+          <GalleryItem num="08" name="Studio Branded" col={6} surface="paper">
+            <StudioBrandedSignature />
           </GalleryItem>
         </div>
 
@@ -90,25 +93,18 @@ export function TemplateGallery() {
   );
 }
 
-/* ────────────────────────────────────────────────────────────────
-   GalleryItem — one column-spanning unit. The template's name lives
-   ABOVE the card (numbered label + name + optional badge), so it
-   reads clearly as "the name of this template", not as part of the
-   signature inside.
-   ──────────────────────────────────────────────────────────────── */
+/* ──────────────── Gallery wrapper ──────────────── */
 function GalleryItem({
   num,
   name,
   col,
   surface,
-  badge,
   children,
 }: {
   num: string;
   name: string;
   col: 3 | 4 | 5 | 6;
   surface: "paper" | "warm" | "ink";
-  badge?: string;
   children: React.ReactNode;
 }) {
   return (
@@ -116,11 +112,6 @@ function GalleryItem({
       <header className="lp-gal-head">
         <span className="lp-gal-head-num">{num}</span>
         <span className="lp-gal-head-name">{name}</span>
-        {badge ? (
-          <span className={`lp-gal-head-badge${badge === "Most popular" ? " is-pop" : ""}`}>
-            {badge}
-          </span>
-        ) : null}
       </header>
       <div className={`lp-gal-chrome lp-gal-surf-${surface}`}>
         <div className="lp-gal-sig">{children}</div>
@@ -129,14 +120,12 @@ function GalleryItem({
   );
 }
 
-/* ────────────────────────────────────────────────────────────────
-   Avatar helper — reused across signatures
-   ──────────────────────────────────────────────────────────────── */
-function Avatar({
+/* ──────────────── Reusable avatar ──────────────── */
+function TplAvatar({
   src,
   fallback,
   tint,
-  size = 52,
+  size = 56,
   shape = "round",
 }: {
   src: string;
@@ -147,277 +136,395 @@ function Avatar({
 }) {
   return (
     <span
-      className={`lp-gal-av lp-gal-av-${shape}`}
-      style={{
-        width: size,
-        height: size,
-        backgroundColor: tint,
-      }}
+      className={`tpl-av tpl-av-${shape}`}
+      style={{ width: size, height: size, backgroundColor: tint }}
     >
       {/* eslint-disable-next-line @next/next/no-img-element */}
       <img src={src} alt="" width={size} height={size} loading="eager" />
-      <span className="lp-gal-av-fb">{fallback}</span>
+      <span className="tpl-av-fb">{fallback}</span>
     </span>
   );
 }
 
-/* ────────────────────────────────────────────────────────────────
-   1) Editorial — paper surface, refined, the "default polished"
-   ──────────────────────────────────────────────────────────────── */
-function EditorialSignature() {
+/* ════════════════════════════════════════════════════════════════
+   01) Classic Pro — Account Manager / Consultant
+   The WiseStamp "Premier" archetype: photo left, content right,
+   navy accent bar, full contact rows with letter labels, social row.
+   Font: Helvetica Neue (the universal sans).
+   ════════════════════════════════════════════════════════════════ */
+function ClassicProSignature() {
   return (
-    <div className="sig-editorial">
-      <div className="sig-head">
-        <Avatar
-          src="https://images.unsplash.com/photo-1494790108377-be9c29b29330?w=128&h=128&q=85&auto=format&fit=crop&crop=faces"
+    <div className="tpl tpl-classic">
+      <div className="tpl-classic-row">
+        <TplAvatar
+          src="https://images.unsplash.com/photo-1494790108377-be9c29b29330?w=160&h=160&q=85&auto=format&fit=crop&crop=faces"
           fallback="AW"
-          tint="oklch(78% 0.06 30)"
+          tint="#dcc9b6"
+          size={68}
         />
-        <div className="sig-head-text">
-          <div className="sig-name">Anna Wright</div>
-          <div className="sig-title">Head of Partnerships</div>
-          <div className="sig-company">Meridian Studio</div>
+        <span className="tpl-classic-bar" aria-hidden />
+        <div className="tpl-classic-body">
+          <div className="tpl-classic-name">Anna Wright</div>
+          <div className="tpl-classic-meta">
+            Senior Account Manager
+            <br />
+            Meridian Studio, New York
+          </div>
+          <div className="tpl-classic-divider" aria-hidden />
+          <div className="tpl-classic-rows">
+            <div>
+              <span className="lbl">E</span>
+              anna.wright@meridian.co
+            </div>
+            <div>
+              <span className="lbl">M</span>
+              +1 (415) 555&#8209;0142
+            </div>
+            <div>
+              <span className="lbl">W</span>
+              meridian.co/anna
+            </div>
+          </div>
+          <div className="tpl-classic-social">
+            <SocialChip color="#1a3a5c">
+              <LinkedinLogo weight="fill" />
+            </SocialChip>
+            <SocialChip color="#1a3a5c">
+              <XLogo weight="fill" />
+            </SocialChip>
+            <SocialChip color="#1a3a5c">
+              <InstagramLogo weight="fill" />
+            </SocialChip>
+          </div>
         </div>
-      </div>
-      <div className="sig-rule sig-rule-accent" />
-      <div className="sig-rows">
-        <div><span className="lbl">e</span> anna@meridian.co</div>
-        <div><span className="lbl">t</span> +1 415 555 0142</div>
-        <div><span className="lbl">w</span> meridian.co</div>
-      </div>
-      <div className="sig-foot">
-        <div className="sig-soc">
-          <span className="b"><LinkedinLogo weight="fill" /></span>
-          <span className="b"><XLogo weight="fill" /></span>
-          <span className="b"><InstagramLogo weight="fill" /></span>
-        </div>
-        <span className="sig-wordmark">
-          <span className="sig-wordmark-mark">M</span>
-          Meridian
-        </span>
       </div>
     </div>
   );
 }
 
-/* ────────────────────────────────────────────────────────────────
-   2) Developer mono — terminal-style on ink
-   ──────────────────────────────────────────────────────────────── */
-function MonoSignature() {
+/* ════════════════════════════════════════════════════════════════
+   02) Developer Terminal — Software Engineer / DevOps
+   Dark surface, monospace, $-prompt rows, GitHub + LinkedIn only.
+   Font: Courier New (renders everywhere, monospace is rare but safe).
+   ════════════════════════════════════════════════════════════════ */
+function DeveloperSignature() {
   return (
-    <div className="sig-mono">
-      <div className="sig-mono-prompt">// labs.dev / staff-eng</div>
-      <div className="sig-mono-head">
-        <Avatar
+    <div className="tpl tpl-dev">
+      <div className="tpl-dev-prompt">// staff-eng @ labs.dev</div>
+      <div className="tpl-dev-row">
+        <TplAvatar
           src="https://images.unsplash.com/photo-1500648767791-00dcc994a43e?w=128&h=128&q=85&auto=format&fit=crop&crop=faces"
           fallback="TK"
-          tint="oklch(68% 0.04 230)"
-        />
-        <div>
-          <div className="sig-mono-name">$ whoami</div>
-          <div className="sig-mono-sub">Tomáš Krátky, Staff Engineer</div>
-        </div>
-      </div>
-      <div className="sig-rule sig-rule-thin-on-ink" />
-      <div className="sig-mono-rows">
-        <div><span className="lbl">›</span> tomas@labs.dev</div>
-        <div><span className="lbl">›</span> github.com/tkratky</div>
-        <div><span className="lbl">›</span> labs.dev/team</div>
-      </div>
-      <div className="sig-foot">
-        <div className="sig-soc">
-          <span className="b on-ink"><GithubLogo weight="fill" /></span>
-          <span className="b on-ink"><LinkedinLogo weight="fill" /></span>
-        </div>
-        <span className="sig-mono-end">// EOF</span>
-      </div>
-    </div>
-  );
-}
-
-/* ────────────────────────────────────────────────────────────────
-   3) Minimal — paper, text-only, almost no decoration
-   ──────────────────────────────────────────────────────────────── */
-function MinimalSignature() {
-  return (
-    <div className="sig-minimal">
-      <div className="sig-name sig-name-light">Marek Tóth</div>
-      <div className="sig-title">Head of Marketing, Northwave</div>
-      <div className="sig-rows sig-rows-min">
-        <div>marek@northwave.io</div>
-        <div>+421 911 555 077</div>
-        <div>northwave.io</div>
-      </div>
-    </div>
-  );
-}
-
-/* ────────────────────────────────────────────────────────────────
-   4) Centered — cream, avatar centered at top
-   ──────────────────────────────────────────────────────────────── */
-function CenteredSignature() {
-  return (
-    <div className="sig-centered">
-      <Avatar
-        src="https://images.unsplash.com/photo-1544005313-94ddf0286df2?w=128&h=128&q=85&auto=format&fit=crop&crop=faces"
-        fallback="JN"
-        tint="oklch(72% 0.10 50)"
-      />
-      <div className="sig-name">Jana Nováková</div>
-      <div className="sig-title">Product Designer</div>
-      <div className="sig-rule sig-rule-accent sig-rule-center" />
-      <div className="sig-rows sig-rows-centered">
-        <div>jana@acme.co</div>
-        <div>acme.co/jana</div>
-      </div>
-      <div className="sig-soc sig-soc-centered">
-        <span className="b"><LinkedinLogo weight="fill" /></span>
-        <span className="b"><XLogo weight="fill" /></span>
-        <span className="b"><InstagramLogo weight="fill" /></span>
-      </div>
-    </div>
-  );
-}
-
-/* ────────────────────────────────────────────────────────────────
-   5) Bold — ink/dark, caps name, strong rule
-   ──────────────────────────────────────────────────────────────── */
-function BoldSignature() {
-  return (
-    <div className="sig-bold">
-      <div className="sig-head">
-        <Avatar
-          src="https://images.unsplash.com/photo-1438761681033-6461ffad8d80?w=128&h=128&q=85&auto=format&fit=crop&crop=faces"
-          fallback="MT"
-          tint="oklch(72% 0.10 50)"
+          tint="#3a5a72"
+          size={46}
           shape="square"
         />
-        <div className="sig-head-text">
-          <div className="sig-name sig-name-caps">MAYA TORRES</div>
-          <div className="sig-title">Creative Director</div>
-          <div className="sig-company">studio.io</div>
+        <div>
+          <div className="tpl-dev-name">$ whoami</div>
+          <div className="tpl-dev-sub">Tomáš Krátky · Staff Engineer</div>
         </div>
       </div>
-      <div className="sig-rule sig-rule-accent" />
-      <div className="sig-rows">
-        <div><span className="lbl">→</span> maya@studio.io</div>
-        <div><span className="lbl">→</span> studio.io/maya</div>
+      <div className="tpl-dev-rows">
+        <div>
+          <span className="lbl">&gt;</span> tomas@labs.dev
+        </div>
+        <div>
+          <span className="lbl">&gt;</span> github.com/tkratky
+        </div>
+        <div>
+          <span className="lbl">&gt;</span> labs.dev/team
+        </div>
       </div>
-      <div className="sig-foot">
-        <div className="sig-soc">
-          <span className="b on-ink"><LinkedinLogo weight="fill" /></span>
-          <span className="b on-ink"><InstagramLogo weight="fill" /></span>
+      <div className="tpl-dev-foot">
+        <span className="tpl-dev-eof">// EOF</span>
+        <div className="tpl-dev-social">
+          <SocialChip color="#5cffa1" onDark>
+            <GithubLogo weight="fill" />
+          </SocialChip>
+          <SocialChip color="#5cffa1" onDark>
+            <LinkedinLogo weight="fill" />
+          </SocialChip>
         </div>
       </div>
     </div>
   );
 }
 
-/* ────────────────────────────────────────────────────────────────
-   6) Compact — paper, square avatar left, dense info right
-   ──────────────────────────────────────────────────────────────── */
+/* ════════════════════════════════════════════════════════════════
+   03) Minimalist Executive — C-suite / Partner
+   No photo. Two lines. The "I don't need to flex" signature.
+   Used by managing partners, investors, senior counsel.
+   Font: Helvetica Neue, very tight.
+   ════════════════════════════════════════════════════════════════ */
+function MinimalistSignature() {
+  return (
+    <div className="tpl tpl-min">
+      <div className="tpl-min-name">Priya Shah</div>
+      <div className="tpl-min-meta">
+        Managing Partner
+        <br />
+        Halo Capital
+      </div>
+      <div className="tpl-min-rule" aria-hidden />
+      <div className="tpl-min-rows">
+        <div>priya@halo.capital</div>
+        <div>halo.capital</div>
+        <div>+1 415 555 0119</div>
+      </div>
+    </div>
+  );
+}
+
+/* ════════════════════════════════════════════════════════════════
+   04) Counsel Centered — Lawyer / Doctor / Financial Advisor
+   Centered, serif, formal. Cream surface. Forest green accent.
+   Font: Georgia (the most-supported serif in email).
+   ════════════════════════════════════════════════════════════════ */
+function CounselSignature() {
+  return (
+    <div className="tpl tpl-counsel">
+      <div className="tpl-counsel-stack">
+        <TplAvatar
+          src="https://images.unsplash.com/photo-1560250097-0b93528c311a?w=128&h=128&q=85&auto=format&fit=crop&crop=faces"
+          fallback="MT"
+          tint="#c8c2b6"
+          size={58}
+        />
+        <div className="tpl-counsel-name">Dr. Marek Tóth</div>
+        <div className="tpl-counsel-title">Senior Tax Counsel</div>
+        <div className="tpl-counsel-firm">Northwave Legal, London</div>
+        <div className="tpl-counsel-rule" aria-hidden />
+        <div className="tpl-counsel-rows">
+          <div>marek@northwave.legal</div>
+          <div>+44 20 7946 0382 · northwave.legal</div>
+        </div>
+        <div className="tpl-counsel-social">
+          <SocialChip color="#2d5239" naked>
+            <LinkedinLogo weight="fill" />
+          </SocialChip>
+          <SocialChip color="#2d5239" naked>
+            <XLogo weight="fill" />
+          </SocialChip>
+        </div>
+      </div>
+    </div>
+  );
+}
+
+/* ════════════════════════════════════════════════════════════════
+   05) Bold Realtor — Real Estate / Insurance / Premium Sales
+   Dark surface, square photo, ALL CAPS name in Arial Black,
+   burgundy accent line, big phone treatment.
+   Font: Arial (with Arial Black for the name).
+   ════════════════════════════════════════════════════════════════ */
+function BoldRealtorSignature() {
+  return (
+    <div className="tpl tpl-bold">
+      <div className="tpl-bold-row">
+        <TplAvatar
+          src="https://images.unsplash.com/photo-1438761681033-6461ffad8d80?w=128&h=128&q=85&auto=format&fit=crop&crop=faces"
+          fallback="MT"
+          tint="#8b6f5c"
+          size={62}
+          shape="square"
+        />
+        <div className="tpl-bold-body">
+          <div className="tpl-bold-name">MAYA TORRES</div>
+          <div className="tpl-bold-title">VP of Sales</div>
+          <div className="tpl-bold-firm">Vertex Realty · Miami</div>
+          <div className="tpl-bold-rule" aria-hidden />
+          <div className="tpl-bold-phone">+1 (305) 555 0188</div>
+          <div className="tpl-bold-email">maya@vertexrealty.com</div>
+        </div>
+      </div>
+      <div className="tpl-bold-foot">
+        <div className="tpl-bold-license">LIC #SL3441290 · FL</div>
+        <div className="tpl-bold-social">
+          <SocialChip color="#c45872" onDark>
+            <LinkedinLogo weight="fill" />
+          </SocialChip>
+          <SocialChip color="#c45872" onDark>
+            <InstagramLogo weight="fill" />
+          </SocialChip>
+        </div>
+      </div>
+    </div>
+  );
+}
+
+/* ════════════════════════════════════════════════════════════════
+   06) Compact Operator — Founder / Operator / High-Volume Sender
+   The WiseStamp "Inline" archetype: single tight block, one row of
+   info, no wasted vertical space. Designed for people sending
+   dozens of replies a day.
+   Font: Helvetica Neue, very small.
+   ════════════════════════════════════════════════════════════════ */
 function CompactSignature() {
   return (
-    <div className="sig-compact">
-      <Avatar
-        src="https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?w=128&h=128&q=85&auto=format&fit=crop&crop=faces"
-        fallback="DK"
-        tint="oklch(72% 0.08 60)"
-        shape="square"
-      />
-      <div className="sig-compact-info">
-        <div className="sig-name sig-name-tight">Daniel Kovács</div>
-        <div className="sig-title">Founder, Atelier Studio</div>
-        <div className="sig-rule sig-rule-accent sig-rule-mini" />
-        <div className="sig-rows sig-rows-tight">
-          <div>daniel@atelier.studio</div>
-          <div>+421 905 123 456 · atelier.studio</div>
-        </div>
-      </div>
-    </div>
-  );
-}
-
-/* ────────────────────────────────────────────────────────────────
-   7) CTA-led — cream, contact + book-a-call button
-   ──────────────────────────────────────────────────────────────── */
-function CtaSignature() {
-  return (
-    <div className="sig-cta">
-      <div className="sig-head">
-        <Avatar
+    <div className="tpl tpl-compact">
+      <div className="tpl-compact-row">
+        <TplAvatar
           src="https://images.unsplash.com/photo-1573497019940-1c28c88b4f3e?w=128&h=128&q=85&auto=format&fit=crop&crop=faces"
           fallback="SK"
-          tint="oklch(76% 0.06 40)"
+          tint="#cca597"
+          size={46}
         />
-        <div className="sig-head-text">
-          <div className="sig-name">Sara Klein</div>
-          <div className="sig-title">Brand Director, Northwave</div>
-        </div>
-      </div>
-      <div className="sig-rule sig-rule-accent" />
-      <div className="sig-rows">
-        <div><span className="lbl">e</span> sara@northwave.io</div>
-        <div><span className="lbl">w</span> northwave.io/brand</div>
-      </div>
-      <div className="sig-cta-row">
-        <span className="sig-cta-btn">
-          <Calendar weight="fill" size={12} />
-          Book a 15-min intro
-          <ArrowUpRight weight="bold" size={11} />
-        </span>
-        <div className="sig-soc">
-          <span className="b"><LinkedinLogo weight="fill" /></span>
-          <span className="b"><XLogo weight="fill" /></span>
+        <div className="tpl-compact-body">
+          <div className="tpl-compact-line1">
+            <strong>Sara Klein</strong>
+            <span className="tpl-dot" aria-hidden>·</span>
+            <span className="tpl-compact-role">Founder &amp; CEO, Northwave</span>
+          </div>
+          <div className="tpl-compact-line2">
+            sara@northwave.io
+            <span className="tpl-dot" aria-hidden>·</span>
+            +44 7700 900 123
+            <span className="tpl-dot" aria-hidden>·</span>
+            northwave.io
+          </div>
+          <div className="tpl-compact-social">
+            <SocialChip color="#1e1e1e" naked>
+              <LinkedinLogo weight="fill" />
+            </SocialChip>
+            <SocialChip color="#1e1e1e" naked>
+              <XLogo weight="fill" />
+            </SocialChip>
+          </div>
         </div>
       </div>
     </div>
   );
 }
 
-/* ────────────────────────────────────────────────────────────────
-   8) Banner-led — paper, branded green strip at top
-   ──────────────────────────────────────────────────────────────── */
-function BannerSignature() {
+/* ════════════════════════════════════════════════════════════════
+   07) Sales CTA — SDR / AE / Anyone Booking Meetings
+   The HubSpot / WiseStamp sales archetype: full contact info plus
+   a prominent "Book a meeting" button. Indigo CTA, on cream surface.
+   Font: Helvetica Neue.
+   ════════════════════════════════════════════════════════════════ */
+function SalesCtaSignature() {
   return (
-    <div className="sig-banner">
-      <div className="sig-banner-strip">
-        <span>STUDIO · Q3 2026</span>
-        <span>NEW WORK · BOOK A CALL</span>
-      </div>
-      <div className="sig-head">
-        <Avatar
-          src="https://images.unsplash.com/photo-1492562080023-ab3db95bfbce?w=128&h=128&q=85&auto=format&fit=crop&crop=faces"
-          fallback="LB"
-          tint="oklch(72% 0.08 50)"
+    <div className="tpl tpl-sales">
+      <div className="tpl-sales-row">
+        <TplAvatar
+          src="https://images.unsplash.com/photo-1531123897727-8f129e1688ce?w=128&h=128&q=85&auto=format&fit=crop&crop=faces"
+          fallback="JB"
+          tint="#a8b8c8"
+          size={66}
         />
-        <div className="sig-head-text">
-          <div className="sig-name">Lucas Beaumont</div>
-          <div className="sig-title">Marketing Director</div>
-          <div className="sig-company">Atelier Beaumont</div>
+        <div className="tpl-sales-body">
+          <div className="tpl-sales-name">Jordan Bailey</div>
+          <div className="tpl-sales-title">
+            Senior Account Executive · <strong>Acme Cloud</strong>
+          </div>
+          <div className="tpl-sales-rows">
+            <div>
+              <span className="lbl">Email</span>
+              jordan.bailey@acmecloud.com
+            </div>
+            <div>
+              <span className="lbl">Mobile</span>
+              +1 (628) 555 0214
+            </div>
+          </div>
+          <div className="tpl-sales-cta-row">
+            <span className="tpl-sales-cta">
+              <Calendar weight="fill" size={13} />
+              Book a 15-min intro
+              <ArrowUpRight weight="bold" size={11} />
+            </span>
+            <div className="tpl-sales-social">
+              <SocialChip color="#3730a3">
+                <LinkedinLogo weight="fill" />
+              </SocialChip>
+              <SocialChip color="#3730a3">
+                <XLogo weight="fill" />
+              </SocialChip>
+            </div>
+          </div>
         </div>
       </div>
-      <div className="sig-banner-rows">
-        <div className="sig-rows">
-          <div><span className="lbl">e</span> lucas@beaumont.studio</div>
-          <div><span className="lbl">t</span> +33 1 42 60 30 30</div>
-          <div><span className="lbl">w</span> beaumont.studio</div>
-          <div><span className="lbl">a</span> 14 rue de Rivoli, Paris</div>
-        </div>
-        <div className="sig-banner-side">
-          <div className="sig-wordmark sig-wordmark-vertical">
-            <span className="sig-wordmark-mark big">B</span>
-            <span className="sig-wordmark-label">
-              <strong>Beaumont</strong>
-              <em>Studio · Paris</em>
-            </span>
-          </div>
-          <div className="sig-soc">
-            <span className="b"><LinkedinLogo weight="fill" /></span>
-            <span className="b"><InstagramLogo weight="fill" /></span>
-          </div>
-        </div>
+      <div className="tpl-sales-discl">
+        Confidential &amp; proprietary. Acme Cloud, Inc. · 1 California St,
+        San Francisco
       </div>
     </div>
+  );
+}
+
+/* ════════════════════════════════════════════════════════════════
+   08) Studio Branded — Design Studio / Boutique Agency
+   Logomark + wordmark masthead, signature below, promotional bottom
+   strip with current quarter's work. Terracotta accent.
+   Font: Verdana (popular with creative studios for its distinctness
+   while still being email-safe).
+   ════════════════════════════════════════════════════════════════ */
+function StudioBrandedSignature() {
+  return (
+    <div className="tpl tpl-studio">
+      <div className="tpl-studio-mast">
+        <span className="tpl-studio-mark" aria-hidden>B</span>
+        <div className="tpl-studio-mast-text">
+          <div className="tpl-studio-word">BEAUMONT</div>
+          <div className="tpl-studio-sub">STUDIO · PARIS · EST. 2018</div>
+        </div>
+      </div>
+      <div className="tpl-studio-divider" aria-hidden />
+      <div className="tpl-studio-row">
+        <TplAvatar
+          src="https://images.unsplash.com/photo-1492562080023-ab3db95bfbce?w=128&h=128&q=85&auto=format&fit=crop&crop=faces"
+          fallback="LB"
+          tint="#c4a48a"
+          size={50}
+        />
+        <div className="tpl-studio-body">
+          <div className="tpl-studio-name">Lucas Beaumont</div>
+          <div className="tpl-studio-title">Creative Director</div>
+        </div>
+        <div className="tpl-studio-contact">
+          <div>lucas@beaumont.studio</div>
+          <div>+33 1 42 60 30 30</div>
+          <div>beaumont.studio</div>
+        </div>
+      </div>
+      <div className="tpl-studio-banner">
+        <span className="tpl-studio-banner-tag">NEW</span>
+        Brand systems for Q3 — see latest work
+        <ArrowUpRight weight="bold" size={11} />
+      </div>
+    </div>
+  );
+}
+
+/* ────────────────────────────────────────────────────────────────
+   Social chip — small circle with brand color background.
+   `naked` = no fill, glyph in color directly (used by minimalist
+   and counsel templates where chips would feel too heavy).
+   ──────────────────────────────────────────────────────────────── */
+function SocialChip({
+  color,
+  onDark,
+  naked,
+  children,
+}: {
+  color: string;
+  onDark?: boolean;
+  naked?: boolean;
+  children: React.ReactNode;
+}) {
+  if (naked) {
+    return (
+      <span className="tpl-social-naked" style={{ color }}>
+        {children}
+      </span>
+    );
+  }
+  return (
+    <span
+      className={`tpl-social-chip${onDark ? " tpl-social-chip-on-dark" : ""}`}
+      style={{ background: color }}
+    >
+      {children}
+    </span>
   );
 }

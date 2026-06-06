@@ -10895,3 +10895,582 @@ footer.lp-footer-legacy {
   .lp-cmp-foot { flex-direction: column; align-items: flex-start; gap: 18px; }
 }
 
+
+/* ════════════════════════════════════════════════════════════════
+   LP v5 — Realistic email-safe signature templates
+   Every .tpl-* signature uses ONLY fonts that render in every
+   major email client (Helvetica, Arial, Georgia, Verdana, Courier
+   New, Times New Roman). What visitors see is what their reply
+   will look like in Gmail / Outlook / Apple Mail.
+   ════════════════════════════════════════════════════════════════ */
+
+.tpl {
+  color: #1e1e1e;
+  text-rendering: optimizeLegibility;
+}
+
+/* Avatar ──────────────────────────────────────────────────────── */
+.tpl-av {
+  position: relative;
+  display: inline-block;
+  overflow: hidden;
+  flex-shrink: 0;
+  background: #d8d3cc;
+  vertical-align: top;
+}
+.tpl-av.tpl-av-round { border-radius: 50%; }
+.tpl-av.tpl-av-square { border-radius: 6px; }
+.tpl-av img {
+  position: relative;
+  z-index: 1;
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+.tpl-av-fb {
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: Arial, sans-serif;
+  font-weight: 700;
+  color: #fff;
+  letter-spacing: 0.02em;
+  font-size: 14px;
+}
+
+/* Social chip ─────────────────────────────────────────────────── */
+.tpl-social-chip {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 22px;
+  height: 22px;
+  border-radius: 50%;
+  color: #fff;
+  margin-right: 5px;
+}
+.tpl-social-chip:last-child { margin-right: 0; }
+.tpl-social-chip svg { width: 12px; height: 12px; fill: currentColor; }
+.tpl-social-chip-on-dark { color: #0c0c10; }
+.tpl-social-naked {
+  display: inline-flex;
+  margin-right: 8px;
+}
+.tpl-social-naked svg { width: 14px; height: 14px; fill: currentColor; }
+
+/* ════════════════════════════════════════════════════════════════
+   01) Classic Pro
+   ════════════════════════════════════════════════════════════════ */
+.tpl-classic {
+  font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+  font-size: 13px;
+  line-height: 1.5;
+  color: #2a2a2a;
+}
+.tpl-classic-row {
+  display: flex;
+  align-items: flex-start;
+  gap: 0;
+}
+.tpl-classic .tpl-av { margin-right: 16px; }
+.tpl-classic-bar {
+  display: inline-block;
+  width: 2px;
+  align-self: stretch;
+  background: #1a3a5c;
+  margin-right: 16px;
+  min-height: 96px;
+}
+.tpl-classic-body { flex: 1; min-width: 0; }
+.tpl-classic-name {
+  font-size: 17px;
+  font-weight: 700;
+  color: #0e1a2c;
+  letter-spacing: -0.005em;
+  margin-bottom: 3px;
+}
+.tpl-classic-meta {
+  font-size: 13px;
+  color: #5a6473;
+  margin-bottom: 10px;
+}
+.tpl-classic-divider {
+  height: 1px;
+  background: #d7dbe1;
+  margin: 0 0 9px;
+}
+.tpl-classic-rows {
+  font-size: 12.5px;
+  color: #2a2a2a;
+  margin-bottom: 10px;
+}
+.tpl-classic-rows > div {
+  padding: 2px 0;
+  display: flex;
+  align-items: center;
+  gap: 7px;
+}
+.tpl-classic-rows .lbl {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 16px;
+  height: 16px;
+  font-size: 9.5px;
+  font-weight: 700;
+  font-family: Arial, sans-serif;
+  letter-spacing: 0;
+  color: #1a3a5c;
+  background: #e7edf4;
+  border-radius: 3px;
+}
+.tpl-classic-social {
+  display: flex;
+  gap: 0;
+}
+
+/* ════════════════════════════════════════════════════════════════
+   02) Developer Terminal
+   ════════════════════════════════════════════════════════════════ */
+.tpl-dev {
+  font-family: "Courier New", Courier, monospace;
+  font-size: 12.5px;
+  line-height: 1.55;
+  color: #c8d4cf;
+}
+.tpl-dev-prompt {
+  font-size: 11px;
+  color: #5cffa1;
+  margin-bottom: 12px;
+  opacity: 0.78;
+}
+.tpl-dev-row {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin-bottom: 12px;
+}
+.tpl-dev-name {
+  font-size: 13.5px;
+  color: #5cffa1;
+  font-weight: 700;
+  margin-bottom: 2px;
+}
+.tpl-dev-sub {
+  font-size: 12.5px;
+  color: #e6efeb;
+}
+.tpl-dev-rows {
+  font-size: 12px;
+  line-height: 1.65;
+  margin-bottom: 12px;
+}
+.tpl-dev-rows .lbl {
+  color: #5cffa1;
+  font-weight: 700;
+  margin-right: 4px;
+}
+.tpl-dev-foot {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding-top: 8px;
+  border-top: 1px dashed rgba(92, 255, 161, 0.22);
+}
+.tpl-dev-eof {
+  font-size: 11px;
+  color: #5cffa1;
+  opacity: 0.6;
+}
+.tpl-dev-social { display: flex; gap: 0; }
+
+/* ════════════════════════════════════════════════════════════════
+   03) Minimalist Executive
+   ════════════════════════════════════════════════════════════════ */
+.tpl-min {
+  font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+  font-size: 12.5px;
+  line-height: 1.55;
+  color: #2a2a2a;
+}
+.tpl-min-name {
+  font-size: 16px;
+  font-weight: 700;
+  color: #0c0c10;
+  margin-bottom: 3px;
+  letter-spacing: -0.005em;
+}
+.tpl-min-meta {
+  font-size: 12.5px;
+  color: #5a6473;
+  margin-bottom: 18px;
+}
+.tpl-min-rule {
+  height: 1px;
+  background: #1e1e1e;
+  width: 24px;
+  margin: 0 0 14px;
+}
+.tpl-min-rows {
+  font-size: 12.5px;
+  color: #2a2a2a;
+}
+.tpl-min-rows > div {
+  padding: 2px 0;
+}
+
+/* ════════════════════════════════════════════════════════════════
+   04) Counsel Centered
+   ════════════════════════════════════════════════════════════════ */
+.tpl-counsel {
+  font-family: Georgia, "Times New Roman", Times, serif;
+  font-size: 13px;
+  line-height: 1.6;
+  color: #1f1f1f;
+  text-align: center;
+}
+.tpl-counsel-stack {
+  display: inline-block;
+  text-align: center;
+}
+.tpl-counsel .tpl-av {
+  display: block;
+  margin: 0 auto 10px;
+}
+.tpl-counsel-name {
+  font-size: 17px;
+  font-weight: 700;
+  color: #14241a;
+  margin-bottom: 2px;
+}
+.tpl-counsel-title {
+  font-style: italic;
+  font-size: 13px;
+  color: #4d5a52;
+  margin-bottom: 1px;
+}
+.tpl-counsel-firm {
+  font-size: 12.5px;
+  color: #4d5a52;
+  margin-bottom: 12px;
+}
+.tpl-counsel-rule {
+  height: 1px;
+  background: #2d5239;
+  width: 56px;
+  margin: 0 auto 12px;
+}
+.tpl-counsel-rows {
+  font-size: 12.5px;
+  color: #2a2a2a;
+  margin-bottom: 12px;
+}
+.tpl-counsel-rows > div { padding: 1px 0; }
+.tpl-counsel-social {
+  display: flex;
+  justify-content: center;
+  gap: 0;
+}
+
+/* ════════════════════════════════════════════════════════════════
+   05) Bold Realtor
+   ════════════════════════════════════════════════════════════════ */
+.tpl-bold {
+  font-family: Arial, "Helvetica Neue", Helvetica, sans-serif;
+  font-size: 12.5px;
+  line-height: 1.5;
+  color: #f4f1ec;
+}
+.tpl-bold-row {
+  display: flex;
+  align-items: flex-start;
+  gap: 14px;
+  margin-bottom: 10px;
+}
+.tpl-bold-body { flex: 1; min-width: 0; }
+.tpl-bold-name {
+  font-family: "Arial Black", Arial, sans-serif;
+  font-size: 16.5px;
+  font-weight: 900;
+  letter-spacing: 0.04em;
+  color: #f4f1ec;
+  margin-bottom: 4px;
+}
+.tpl-bold-title {
+  font-size: 12.5px;
+  color: #c1a59d;
+  letter-spacing: 0.02em;
+  margin-bottom: 1px;
+}
+.tpl-bold-firm {
+  font-size: 12.5px;
+  color: #c1a59d;
+  margin-bottom: 8px;
+}
+.tpl-bold-rule {
+  height: 2px;
+  background: #c45872;
+  width: 38px;
+  margin: 0 0 8px;
+}
+.tpl-bold-phone {
+  font-family: "Arial Black", Arial, sans-serif;
+  font-weight: 900;
+  font-size: 14.5px;
+  color: #f4f1ec;
+  letter-spacing: 0.01em;
+}
+.tpl-bold-email {
+  font-size: 12.5px;
+  color: #c1a59d;
+  margin-top: 2px;
+}
+.tpl-bold-foot {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding-top: 10px;
+  border-top: 1px solid rgba(244, 241, 236, 0.10);
+  gap: 12px;
+}
+.tpl-bold-license {
+  font-size: 10.5px;
+  letter-spacing: 0.10em;
+  color: rgba(244, 241, 236, 0.55);
+  text-transform: uppercase;
+}
+
+/* ════════════════════════════════════════════════════════════════
+   06) Compact Operator
+   ════════════════════════════════════════════════════════════════ */
+.tpl-compact {
+  font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+  font-size: 12.5px;
+  line-height: 1.5;
+  color: #2a2a2a;
+}
+.tpl-compact-row {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+.tpl-compact-body { flex: 1; min-width: 0; }
+.tpl-compact-line1 {
+  font-size: 13.5px;
+  color: #0c0c10;
+  margin-bottom: 3px;
+  display: flex;
+  align-items: baseline;
+  gap: 7px;
+  flex-wrap: wrap;
+}
+.tpl-compact-line1 strong { font-weight: 700; }
+.tpl-compact-role { color: #5a6473; font-weight: 500; }
+.tpl-compact-line2 {
+  font-size: 12px;
+  color: #5a6473;
+  display: flex;
+  align-items: baseline;
+  gap: 7px;
+  flex-wrap: wrap;
+  margin-bottom: 6px;
+}
+.tpl-compact-social {
+  display: flex;
+  gap: 0;
+}
+.tpl-dot { color: #a8b2bf; }
+
+/* ════════════════════════════════════════════════════════════════
+   07) Sales CTA
+   ════════════════════════════════════════════════════════════════ */
+.tpl-sales {
+  font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+  font-size: 13px;
+  line-height: 1.5;
+  color: #2a2a2a;
+}
+.tpl-sales-row {
+  display: flex;
+  align-items: flex-start;
+  gap: 16px;
+  margin-bottom: 12px;
+}
+.tpl-sales-body { flex: 1; min-width: 0; }
+.tpl-sales-name {
+  font-size: 17px;
+  font-weight: 700;
+  color: #0c0c10;
+  letter-spacing: -0.005em;
+  margin-bottom: 3px;
+}
+.tpl-sales-title {
+  font-size: 13px;
+  color: #5a6473;
+  margin-bottom: 10px;
+}
+.tpl-sales-title strong { color: #3730a3; }
+.tpl-sales-rows {
+  font-size: 12.5px;
+  color: #2a2a2a;
+  margin-bottom: 12px;
+}
+.tpl-sales-rows > div {
+  padding: 2px 0;
+  display: flex;
+  align-items: baseline;
+  gap: 8px;
+}
+.tpl-sales-rows .lbl {
+  font-size: 10.5px;
+  font-weight: 700;
+  letter-spacing: 0.06em;
+  color: #5a6473;
+  text-transform: uppercase;
+  min-width: 50px;
+}
+.tpl-sales-cta-row {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  flex-wrap: wrap;
+}
+.tpl-sales-cta {
+  display: inline-flex;
+  align-items: center;
+  gap: 7px;
+  padding: 8px 13px;
+  background: #3730a3;
+  color: #fff;
+  border-radius: 6px;
+  font-size: 12.5px;
+  font-weight: 600;
+  letter-spacing: -0.005em;
+}
+.tpl-sales-cta svg { color: #fff; }
+.tpl-sales-social { display: flex; gap: 0; }
+.tpl-sales-discl {
+  font-size: 10.5px;
+  color: #8590a0;
+  line-height: 1.5;
+  border-top: 1px solid #e6e9ee;
+  padding-top: 9px;
+  margin-top: 4px;
+}
+
+/* ════════════════════════════════════════════════════════════════
+   08) Studio Branded
+   ════════════════════════════════════════════════════════════════ */
+.tpl-studio {
+  font-family: Verdana, Geneva, sans-serif;
+  font-size: 12px;
+  line-height: 1.5;
+  color: #1f1d1b;
+}
+.tpl-studio-mast {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin-bottom: 8px;
+}
+.tpl-studio-mark {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 32px;
+  height: 32px;
+  background: #a64a30;
+  color: #fff7ed;
+  font-family: Georgia, "Times New Roman", serif;
+  font-weight: 700;
+  font-size: 19px;
+  border-radius: 5px;
+  letter-spacing: -0.02em;
+}
+.tpl-studio-word {
+  font-family: Georgia, "Times New Roman", Times, serif;
+  font-size: 19px;
+  font-weight: 700;
+  letter-spacing: 0.06em;
+  color: #1f1d1b;
+  line-height: 1;
+}
+.tpl-studio-sub {
+  font-size: 9.5px;
+  letter-spacing: 0.14em;
+  color: #7a6f63;
+  margin-top: 4px;
+}
+.tpl-studio-divider {
+  height: 1px;
+  background: #d8d2c5;
+  margin: 4px 0 12px;
+}
+.tpl-studio-row {
+  display: flex;
+  align-items: flex-start;
+  gap: 14px;
+  margin-bottom: 14px;
+}
+.tpl-studio-body { min-width: 0; }
+.tpl-studio-name {
+  font-size: 14px;
+  font-weight: 700;
+  color: #1f1d1b;
+  margin-bottom: 2px;
+}
+.tpl-studio-title {
+  font-size: 12px;
+  color: #5d544a;
+}
+.tpl-studio-contact {
+  margin-left: auto;
+  font-size: 12px;
+  color: #2a2624;
+  text-align: right;
+  line-height: 1.55;
+}
+.tpl-studio-banner {
+  display: inline-flex;
+  align-items: center;
+  gap: 9px;
+  padding: 8px 14px;
+  background: #f6ece0;
+  color: #5a2d1d;
+  font-size: 11.5px;
+  font-weight: 600;
+  border-radius: 6px;
+  letter-spacing: 0.005em;
+}
+.tpl-studio-banner svg { color: #5a2d1d; }
+.tpl-studio-banner-tag {
+  display: inline-flex;
+  align-items: center;
+  padding: 1px 6px;
+  background: #a64a30;
+  color: #fff7ed;
+  font-size: 9.5px;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  border-radius: 3px;
+}
+
+/* ── Responsive nudges for narrow bento cards ───────────────── */
+@media (max-width: 980px) {
+  .tpl-studio-row { flex-wrap: wrap; }
+  .tpl-studio-contact { margin-left: 0; text-align: left; flex: 1 1 100%; }
+  .tpl-sales-cta-row { gap: 10px; }
+}
+@media (max-width: 720px) {
+  .tpl-classic-name,
+  .tpl-sales-name,
+  .tpl-counsel-name { font-size: 15.5px; }
+  .tpl-bold-name { font-size: 14.5px; }
+  .tpl-studio-word { font-size: 17px; }
+  .tpl-classic-bar { min-height: 80px; }
+}
+
