@@ -10018,31 +10018,24 @@ footer.lp-footer-legacy {
    LP v4.3 — Annotation-feedback pass
    ════════════════════════════════════════════════════════════════ */
 
-/* ── Section pills get a real icon glyph, replacing the dot ──── */
+/* ── Section pills get a real icon glyph, replacing the dot ────
+   No chip background. Icon takes its color from the pill itself
+   (ink on light pills, off-white on dark pills) so it always
+   reads against whichever surface it sits on. */
 .lp-pill-ico {
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  width: 16px;
-  height: 16px;
-  border-radius: 50%;
-  background: var(--accent-soft);
-  color: var(--accent);
+  color: var(--ink);
   flex-shrink: 0;
-  margin-right: -1px;
 }
 .lp-pill-ico svg {
   display: block;
-  width: 10px;
-  height: 10px;
+  width: 12px;
+  height: 12px;
 }
 .lp-pill-dark .lp-pill-ico {
-  background: oklch(78% 0.19 130 / 0.18);
-  color: var(--accent);
-}
-/* On cream sections, lighten the icon chip background slightly so it reads */
-.lp-section-cream .lp-pill-ico {
-  background: oklch(78% 0.19 130 / 0.16);
+  color: var(--bg);
 }
 
 /* ── Final CTA: smaller headline, layered atmospheric background ──
