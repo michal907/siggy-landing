@@ -8802,7 +8802,7 @@ footer.lp-footer-legacy {
   bottom: -22%;
   left: 8%;
   background: oklch(78% 0.19 130);
-  opacity: 0.62;
+  opacity: 0.47;
   animation: lp-blob-1 28s cubic-bezier(0.45, 0, 0.55, 1) infinite;
 }
 
@@ -8813,7 +8813,7 @@ footer.lp-footer-legacy {
   bottom: -34%;
   left: 36%;
   background: oklch(66% 0.21 138);
-  opacity: 0.55;
+  opacity: 0.41;
   animation: lp-blob-2 34s cubic-bezier(0.45, 0, 0.55, 1) infinite;
   animation-delay: -8s;
 }
@@ -8825,7 +8825,7 @@ footer.lp-footer-legacy {
   bottom: -20%;
   right: 6%;
   background: oklch(82% 0.22 128);
-  opacity: 0.50;
+  opacity: 0.38;
   animation: lp-blob-3 30s cubic-bezier(0.45, 0, 0.55, 1) infinite;
   animation-delay: -16s;
 }
