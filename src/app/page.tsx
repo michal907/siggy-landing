@@ -127,11 +127,11 @@ export default function Home() {
         <section className="lp-hero lp-hero-night">
           {/* Smooth atmospheric wash — no discrete blobs */}
           <div className="lp-mesh" aria-hidden="true">
-            <span className="lp-mesh-blob lp-mesh-blob-1" />
-            <span className="lp-mesh-blob lp-mesh-blob-2" />
-            <span className="lp-mesh-blob lp-mesh-blob-3" />
-            <span className="lp-mesh-blob lp-mesh-blob-4" />
-            <span className="lp-mesh-blob lp-mesh-blob-5" />
+            <div className="lp-mesh-glow">
+              <span className="lp-mesh-blob lp-mesh-blob-1" />
+              <span className="lp-mesh-blob lp-mesh-blob-2" />
+              <span className="lp-mesh-blob lp-mesh-blob-3" />
+            </div>
           </div>
           <div className="container lp-hero-inner">
             <div className="lp-hero-text">
