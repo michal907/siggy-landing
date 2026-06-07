@@ -90,7 +90,6 @@ function GmailCard() {
         <div className="ec-thread-subj">Re: Q3 partnership review</div>
       </div>
       <div className="ec-body">
-        <p>Marek, thanks for sending the deck. Looks ready to ship.</p>
         <p className="ec-signoff">Best,</p>
         <ClassicProMini />
       </div>
@@ -172,7 +171,6 @@ function OutlookCard() {
         <div className="ec-thread-subj">RE: 142 Brickell offer</div>
       </div>
       <div className="ec-body">
-        <p>Jordan, send me the disclosure and I&apos;ll review tonight.</p>
         <p className="ec-signoff">Best,</p>
         <BoldRealtorMini />
       </div>
@@ -250,7 +248,6 @@ function AppleMailCard() {
         <div className="ec-thread-subj">Tax counsel · clause 14.2</div>
       </div>
       <div className="ec-body">
-        <p>Anna, the amendment is acceptable. Proceeding to sign.</p>
         <p className="ec-signoff">Best regards,</p>
         <CounselMini />
       </div>

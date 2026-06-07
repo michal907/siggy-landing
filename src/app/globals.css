@@ -11801,7 +11801,7 @@ footer.lp-footer-legacy {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  padding: 10px 14px;
+  padding: 8px 13px;
   border-bottom: 1px solid oklch(20% 0.018 250 / 0.08);
   flex-shrink: 0;
 }
@@ -11883,7 +11883,7 @@ footer.lp-footer-legacy {
 
 /* Thread summary row (selected email) */
 .ec-thread {
-  padding: 9px 14px 10px;
+  padding: 7px 13px 8px;
   border-bottom: 1px solid oklch(20% 0.018 250 / 0.06);
   background: oklch(20% 0.018 250 / 0.018);
   flex-shrink: 0;
@@ -11934,18 +11934,21 @@ footer.lp-footer-legacy {
   flex-shrink: 0;
 }
 
-/* Body */
+/* Body — signature is the dominant element here */
 .ec-body {
-  padding: 12px 16px 16px;
-  font-size: 11px;
+  padding: 12px 18px 18px;
+  font-size: 11.5px;
   line-height: 1.5;
   color: var(--ink);
   flex: 1;
   min-height: 0;
   overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
 }
-.ec-body p { margin: 0 0 5px; }
-.ec-signoff { color: oklch(20% 0.018 250 / 0.7); }
+.ec-body p { margin: 0; }
+.ec-signoff { color: oklch(20% 0.018 250 / 0.7); font-size: 12px; }
 
 /* ──────────────── Mini signatures (.tplm-*) ──────────────── */
 .tplm-av {
@@ -11984,10 +11987,9 @@ footer.lp-footer-legacy {
 /* Classic Pro mini */
 .tplm-classic {
   font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
-  font-size: 10px;
-  line-height: 1.4;
+  font-size: 12px;
+  line-height: 1.45;
   color: #2a2a2a;
-  margin-top: 2px;
 }
 .tplm-classic-row {
   display: flex;
@@ -11995,86 +11997,89 @@ footer.lp-footer-legacy {
   gap: 0;
 }
 .tplm-classic .tplm-av {
-  width: 48px;
-  height: 48px;
-  margin-right: 10px;
+  width: 60px;
+  height: 60px;
+  margin-right: 12px;
 }
 .tplm-classic-bar {
   width: 1px;
   align-self: stretch;
   background: #1a3a5c;
-  margin-right: 10px;
+  margin-right: 12px;
 }
 .tplm-classic-body { flex: 1; min-width: 0; }
 .tplm-classic-name {
-  font-size: 12px;
+  font-size: 15px;
   font-weight: 700;
   color: #0e1a2c;
   letter-spacing: -0.005em;
-  margin-bottom: 1px;
+  margin-bottom: 2px;
 }
 .tplm-classic-meta {
-  font-size: 9.5px;
+  font-size: 11.5px;
   color: #5a6473;
-  margin-bottom: 5px;
+  margin-bottom: 7px;
   line-height: 1.35;
 }
 .tplm-classic-rule {
   height: 1px;
   background: #d7dbe1;
-  margin: 0 0 5px;
+  margin: 0 0 6px;
 }
 .tplm-classic-rows {
-  font-size: 9.5px;
+  font-size: 11px;
   color: #2a2a2a;
-  margin-bottom: 6px;
+  margin-bottom: 8px;
 }
 .tplm-classic-rows > div {
   display: flex;
   align-items: center;
-  gap: 5px;
+  gap: 6px;
   padding: 1px 0;
 }
 .tplm-classic-rows svg {
   color: #1a3a5c;
   opacity: 0.78;
   flex-shrink: 0;
+  width: 11px;
+  height: 11px;
 }
 .tplm-classic-social { display: flex; gap: 0; }
+.tplm-classic-social .tplm-soc-chip { width: 20px; height: 20px; margin-right: 5px; }
+.tplm-classic-social .tplm-soc-chip svg { width: 10px; height: 10px; }
 
 /* Bold Realtor mini */
 .tplm-bold {
   font-family: Arial, "Helvetica Neue", Helvetica, sans-serif;
-  font-size: 10px;
-  line-height: 1.4;
+  font-size: 12px;
+  line-height: 1.45;
   color: #1e1e1e;
-  margin-top: 2px;
 }
 .tplm-bold-row {
   display: flex;
   align-items: flex-start;
-  gap: 10px;
-  margin-bottom: 7px;
+  gap: 12px;
+  margin-bottom: 8px;
 }
 .tplm-bold .tplm-av {
-  width: 46px;
-  height: 46px;
+  width: 58px;
+  height: 58px;
   border: 1px solid #1e1e1e;
 }
 .tplm-bold-body { flex: 1; min-width: 0; }
 .tplm-bold-name {
   font-family: "Arial Black", Arial, sans-serif;
   font-weight: 900;
-  font-size: 13.5px;
+  font-size: 16px;
   letter-spacing: 0.04em;
   color: #1e1e1e;
-  margin-bottom: 1px;
+  margin-bottom: 2px;
   line-height: 1.05;
 }
 .tplm-bold-title {
-  font-size: 10px;
+  font-size: 11.5px;
   color: #5a4a52;
-  margin-bottom: 5px;
+  margin-bottom: 6px;
 }
 .tplm-bold-firm {
   font-weight: 700;
@@ -12083,96 +12088,101 @@ footer.lp-footer-legacy {
 .tplm-bold-rule {
   height: 2px;
   background: #7a2942;
-  width: 28px;
-  margin: 0 0 5px;
+  width: 32px;
+  margin: 0 0 6px;
 }
 .tplm-bold-phone {
   font-family: "Arial Black", Arial, sans-serif;
   font-weight: 900;
-  font-size: 12px;
+  font-size: 14.5px;
   color: #7a2942;
   display: inline-flex;
   align-items: center;
-  gap: 5px;
+  gap: 6px;
 }
-.tplm-bold-phone svg { color: #7a2942; }
+.tplm-bold-phone svg { color: #7a2942; width: 13px; height: 13px; }
 .tplm-bold-email {
-  font-size: 10px;
+  font-size: 11.5px;
   color: #5a4a52;
   display: inline-flex;
   align-items: center;
-  gap: 4px;
-  margin-top: 1px;
+  gap: 5px;
+  margin-top: 2px;
 }
-.tplm-bold-email svg { color: #5a4a52; }
+.tplm-bold-email svg { color: #5a4a52; width: 11px; height: 11px; }
 .tplm-bold-foot {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  padding-top: 6px;
+  padding-top: 8px;
   margin-top: 2px;
   border-top: 1px solid #ead1d8;
 }
 .tplm-bold-license {
-  font-size: 9px;
-  letter-spacing: 0.08em;
+  font-size: 10.5px;
+  letter-spacing: 0.10em;
   color: #7a2942;
   text-transform: uppercase;
   font-weight: 700;
 }
 .tplm-bold-social { display: flex; gap: 0; }
+.tplm-bold-social .tplm-soc-chip { width: 20px; height: 20px; margin-right: 5px; }
+.tplm-bold-social .tplm-soc-chip svg { width: 10px; height: 10px; }
 
 /* Counsel Centered mini */
 .tplm-counsel {
   font-family: Georgia, "Times New Roman", Times, serif;
-  font-size: 10px;
+  font-size: 11.5px;
   line-height: 1.5;
   color: #1f1f1f;
   text-align: center;
-  margin-top: 2px;
 }
 .tplm-counsel .tplm-av {
   display: block;
-  margin: 0 auto 6px;
+  margin: 0 auto 8px;
+  width: 52px;
+  height: 52px;
 }
 .tplm-counsel-name {
-  font-size: 13px;
+  font-size: 16px;
   font-weight: 700;
   color: #14241a;
-  margin-bottom: 1px;
+  margin-bottom: 2px;
 }
 .tplm-counsel-title {
   font-style: italic;
-  font-size: 10.5px;
+  font-size: 12px;
   color: #4d5a52;
 }
 .tplm-counsel-firm {
-  font-size: 10px;
+  font-size: 11.5px;
   color: #4d5a52;
-  margin-bottom: 7px;
+  margin-bottom: 9px;
 }
 .tplm-counsel-rule {
   height: 1px;
   background: #2d5239;
-  width: 36px;
-  margin: 0 auto 7px;
+  width: 44px;
+  margin: 0 auto 9px;
 }
 .tplm-counsel-rows {
-  font-size: 10px;
+  font-size: 11.5px;
   color: #2a2a2a;
   display: flex;
   flex-direction: column;
-  gap: 2px;
+  gap: 3px;
 }
 .tplm-counsel-rows > div {
   display: inline-flex;
   align-items: center;
-  gap: 5px;
+  gap: 6px;
   justify-content: center;
 }
 .tplm-counsel-rows svg {
   color: #2d5239;
   opacity: 0.78;
+  width: 11px;
+  height: 11px;
 }
 
 @media (max-width: 980px) {
