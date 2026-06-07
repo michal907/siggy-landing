@@ -5,15 +5,21 @@ import {
   LinkedinLogo,
   XLogo,
   InstagramLogo,
-  GithubLogo,
   Lightning,
+  MagnifyingGlass,
+  Star,
+  EnvelopeSimple,
+  Phone,
+  DeviceMobile,
+  GlobeSimple,
 } from "@phosphor-icons/react/dist/ssr";
 
-/**
- * Stacked signature cluster. Three fully-built signatures on different
- * shades of white / Envato cream. Cycle every 3s with a fluent ease-out.
- * Respects prefers-reduced-motion.
- */
+/* ────────────────────────────────────────────────────────────────
+   SignatureCluster — three square cards stacked, each rendering a
+   real signature from the template gallery inside the email client
+   it'd typically land in: Gmail, Outlook, Apple Mail. Cycle every
+   3.5s. 1:1 aspect ratio. Email-safe fonts inside every signature.
+   ──────────────────────────────────────────────────────────────── */
 export function SignatureCluster() {
   const [active, setActive] = useState(0);
 
@@ -29,9 +35,9 @@ export function SignatureCluster() {
   }, []);
 
   const cards = [
-    { id: "anna", tilt: -3, render: <AnnaCard /> },
-    { id: "maya", tilt: 5, render: <MayaCard /> },
-    { id: "tomas", tilt: -6, render: <TomasCard /> },
+    { id: "gmail-anna", tilt: -3, render: <GmailCard /> },
+    { id: "outlook-maya", tilt: 5, render: <OutlookCard /> },
+    { id: "apple-marek", tilt: -6, render: <AppleMailCard /> },
   ];
 
   return (
@@ -59,163 +65,230 @@ export function SignatureCluster() {
   );
 }
 
-/* ────────────────────────────────────────────────
-   Card 1: Anna Wright (paper-white)
-   Photo + name + role + contacts + socials + brand wordmark
-   ──────────────────────────────────────────────── */
-function AnnaCard() {
+/* ════════════════════════════════════════════════════════════════
+   Card 1: Gmail + Classic Pro signature (Anna Wright)
+   ════════════════════════════════════════════════════════════════ */
+function GmailCard() {
   return (
-    <div className="lp-cluster-content lp-cluster-content-paper">
-      <div className="lp-cluster-head">
-        <Avatar
-          src="https://images.unsplash.com/photo-1494790108377-be9c29b29330?w=128&h=128&q=85&auto=format&fit=crop&crop=faces"
-          fallback="AW"
-          tint="oklch(78% 0.06 30)"
-        />
-        <div className="lp-cluster-head-text">
-          <div className="lp-cluster-name">Anna Wright</div>
-          <div className="lp-cluster-title">Head of Partnerships</div>
-          <div className="lp-cluster-company">Meridian Studio</div>
+    <div className="ec ec-gmail">
+      <div className="ec-chrome">
+        <div className="ec-chrome-left">
+          <span className="ec-glyph ec-glyph-gmail" aria-hidden>M</span>
+          <span className="ec-app-name">Gmail</span>
+        </div>
+        <div className="ec-chrome-right">
+          <MagnifyingGlass weight="regular" size={11} />
+          <span className="ec-chrome-avatar" aria-hidden>S</span>
         </div>
       </div>
-      <div className="lp-cluster-rule lp-cluster-rule-accent" />
-      <div className="lp-cluster-rows">
-        <div><span className="lbl">e</span> anna@meridian.co</div>
-        <div><span className="lbl">t</span> +1 415 555 0142</div>
-        <div><span className="lbl">w</span> meridian.co</div>
-      </div>
-      <div className="lp-cluster-foot">
-        <div className="lp-cluster-soc">
-          <span className="b"><LinkedinLogo weight="fill" /></span>
-          <span className="b"><XLogo weight="fill" /></span>
-          <span className="b"><InstagramLogo weight="fill" /></span>
+      <div className="ec-thread">
+        <div className="ec-thread-row">
+          <Star weight="fill" size={10} />
+          <span className="ec-thread-from">Anna Wright</span>
+          <span className="ec-thread-time">10:42 AM</span>
         </div>
-        <BrandWordmark mark="M" label="Meridian Studio" />
+        <div className="ec-thread-subj">Re: Q3 partnership review</div>
+      </div>
+      <div className="ec-body">
+        <p>Marek, thanks for sending the deck. Looks ready to ship.</p>
+        <p className="ec-signoff">Best,</p>
+        <ClassicProMini />
       </div>
     </div>
   );
 }
 
-/* ────────────────────────────────────────────────
-   Card 2: Maya Torres (warm cream)
-   Banner strip + photo + name caps + role + contacts + studio mark
-   ──────────────────────────────────────────────── */
-function MayaCard() {
+/* Mini Classic Pro signature — photo + 1px navy bar + body */
+function ClassicProMini() {
   return (
-    <div className="lp-cluster-content lp-cluster-content-cream">
-      <div className="lp-cluster-banner">
-        <span className="lp-cluster-banner-tag">STUDIO</span>
-        <span className="lp-cluster-banner-line" aria-hidden />
-        <span className="lp-cluster-banner-meta">EST · 2019</span>
-      </div>
-      <div className="lp-cluster-head">
-        <Avatar
-          src="https://images.unsplash.com/photo-1438761681033-6461ffad8d80?w=128&h=128&q=85&auto=format&fit=crop&crop=faces"
-          fallback="MT"
-          tint="oklch(72% 0.10 50)"
-          shape="square"
-        />
-        <div className="lp-cluster-head-text">
-          <div className="lp-cluster-name lp-cluster-name-caps">MAYA TORRES</div>
-          <div className="lp-cluster-title">Creative Director</div>
-          <div className="lp-cluster-company">studio.io</div>
+    <div className="tplm tplm-classic">
+      <div className="tplm-classic-row">
+        <span className="tplm-av tplm-av-round">
+          {/* eslint-disable-next-line @next/next/no-img-element */}
+          <img
+            src="https://images.unsplash.com/photo-1494790108377-be9c29b29330?w=120&h=120&q=85&auto=format&fit=crop&crop=faces"
+            alt=""
+            width={48}
+            height={48}
+          />
+        </span>
+        <span className="tplm-classic-bar" aria-hidden />
+        <div className="tplm-classic-body">
+          <div className="tplm-classic-name">Anna Wright</div>
+          <div className="tplm-classic-meta">
+            Senior Account Manager
+            <br />
+            Meridian Studio, New York
+          </div>
+          <div className="tplm-classic-rule" aria-hidden />
+          <div className="tplm-classic-rows">
+            <div>
+              <EnvelopeSimple weight="regular" size={9} />
+              anna.wright@meridian.co
+            </div>
+            <div>
+              <DeviceMobile weight="regular" size={9} />
+              +1 (415) 555 0142
+            </div>
+          </div>
+          <div className="tplm-classic-social">
+            <span className="tplm-soc-chip" style={{ background: "#1a3a5c" }}>
+              <LinkedinLogo weight="fill" />
+            </span>
+            <span className="tplm-soc-chip" style={{ background: "#1a3a5c" }}>
+              <XLogo weight="fill" />
+            </span>
+            <span className="tplm-soc-chip" style={{ background: "#1a3a5c" }}>
+              <InstagramLogo weight="fill" />
+            </span>
+          </div>
         </div>
-      </div>
-      <div className="lp-cluster-rule lp-cluster-rule-accent" />
-      <div className="lp-cluster-rows">
-        <div><span className="lbl">m</span> maya@studio.io</div>
-        <div><span className="lbl">w</span> studio.io/maya</div>
-      </div>
-      <div className="lp-cluster-foot">
-        <div className="lp-cluster-soc">
-          <span className="b"><LinkedinLogo weight="fill" /></span>
-          <span className="b"><InstagramLogo weight="fill" /></span>
-        </div>
-        <BrandWordmark mark="S" label="studio.io" geometric />
       </div>
     </div>
   );
 }
 
-/* ────────────────────────────────────────────────
-   Card 3: Tomáš (off-cream, developer style)
-   Mono kicker + photo + name + role + repo + GitHub
-   ──────────────────────────────────────────────── */
-function TomasCard() {
+/* ════════════════════════════════════════════════════════════════
+   Card 2: Outlook + Bold Realtor signature (Maya Torres)
+   ════════════════════════════════════════════════════════════════ */
+function OutlookCard() {
   return (
-    <div className="lp-cluster-content lp-cluster-content-bone">
-      <div className="lp-cluster-mono-row">// DEVELOPER · LABS.DEV</div>
-      <div className="lp-cluster-head">
-        <Avatar
-          src="https://images.unsplash.com/photo-1500648767791-00dcc994a43e?w=128&h=128&q=85&auto=format&fit=crop&crop=faces"
-          fallback="TK"
-          tint="oklch(68% 0.04 230)"
-        />
-        <div className="lp-cluster-head-text">
-          <div className="lp-cluster-name lp-cluster-name-mono">$ whoami</div>
-          <div className="lp-cluster-title">Tomáš Krátky, Staff Engineer</div>
-          <div className="lp-cluster-company">labs.dev</div>
+    <div className="ec ec-outlook">
+      <div className="ec-chrome">
+        <div className="ec-chrome-left">
+          <span className="ec-glyph ec-glyph-outlook" aria-hidden>O</span>
+          <span className="ec-app-name">Outlook</span>
+        </div>
+        <div className="ec-chrome-right">
+          <span className="ec-chrome-folder">Focused Inbox</span>
         </div>
       </div>
-      <div className="lp-cluster-rule lp-cluster-rule-thin" />
-      <div className="lp-cluster-rows lp-cluster-rows-mono">
-        <div><span className="lbl">›</span> tomas@labs.dev</div>
-        <div><span className="lbl">›</span> github.com/tkratky</div>
-      </div>
-      <div className="lp-cluster-foot">
-        <div className="lp-cluster-soc">
-          <span className="b"><GithubLogo weight="fill" /></span>
-          <span className="b"><LinkedinLogo weight="fill" /></span>
+      <div className="ec-thread">
+        <div className="ec-thread-row">
+          <span className="ec-thread-flag" aria-hidden />
+          <span className="ec-thread-from">Maya Torres</span>
+          <span className="ec-thread-time">Wed 9:08</span>
         </div>
-        <BrandWordmark mark="L" label="labs.dev" mono />
+        <div className="ec-thread-subj">RE: 142 Brickell offer</div>
+      </div>
+      <div className="ec-body">
+        <p>Jordan, send me the disclosure and I&apos;ll review tonight.</p>
+        <p className="ec-signoff">Best,</p>
+        <BoldRealtorMini />
       </div>
     </div>
   );
 }
 
-/* ────────────────────────────────────────────────
-   Helpers
-   ──────────────────────────────────────────────── */
-function Avatar({
-  src,
-  fallback,
-  tint,
-  shape = "round",
-}: {
-  src: string;
-  fallback: string;
-  tint: string;
-  shape?: "round" | "square";
-}) {
+/* Mini Bold Realtor signature */
+function BoldRealtorMini() {
   return (
-    <span
-      className={`lp-cluster-avatar lp-cluster-avatar-${shape}`}
-      style={{ backgroundColor: tint }}
-    >
-      {/* eslint-disable-next-line @next/next/no-img-element */}
-      <img src={src} alt="" width={56} height={56} loading="eager" />
-      <span className="lp-cluster-avatar-fb">{fallback}</span>
-    </span>
+    <div className="tplm tplm-bold">
+      <div className="tplm-bold-row">
+        <span className="tplm-av tplm-av-square">
+          {/* eslint-disable-next-line @next/next/no-img-element */}
+          <img
+            src="https://images.unsplash.com/photo-1438761681033-6461ffad8d80?w=120&h=120&q=85&auto=format&fit=crop&crop=faces"
+            alt=""
+            width={48}
+            height={48}
+          />
+        </span>
+        <div className="tplm-bold-body">
+          <div className="tplm-bold-name">MAYA TORRES</div>
+          <div className="tplm-bold-title">
+            VP of Sales · <span className="tplm-bold-firm">Vertex Realty Miami</span>
+          </div>
+          <div className="tplm-bold-rule" aria-hidden />
+          <div className="tplm-bold-phone">
+            <Phone weight="fill" size={10} />
+            +1 (305) 555 0188
+          </div>
+          <div className="tplm-bold-email">
+            <EnvelopeSimple weight="regular" size={9} />
+            maya@vertexrealty.com
+          </div>
+        </div>
+      </div>
+      <div className="tplm-bold-foot">
+        <span className="tplm-bold-license">FL LIC #SL3441290</span>
+        <div className="tplm-bold-social">
+          <span className="tplm-soc-chip" style={{ background: "#7a2942" }}>
+            <LinkedinLogo weight="fill" />
+          </span>
+          <span className="tplm-soc-chip" style={{ background: "#7a2942" }}>
+            <InstagramLogo weight="fill" />
+          </span>
+        </div>
+      </div>
+    </div>
   );
 }
 
-function BrandWordmark({
-  mark,
-  label,
-  mono,
-  geometric,
-}: {
-  mark: string;
-  label: string;
-  mono?: boolean;
-  geometric?: boolean;
-}) {
+/* ════════════════════════════════════════════════════════════════
+   Card 3: Apple Mail + Counsel Centered signature (Dr. Marek Tóth)
+   ════════════════════════════════════════════════════════════════ */
+function AppleMailCard() {
   return (
-    <span className={`lp-cluster-wordmark ${mono ? "lp-cluster-wordmark-mono" : ""}`}>
-      <span className={`lp-cluster-wordmark-mark ${geometric ? "geo" : ""}`}>
-        {mark}
+    <div className="ec ec-apple">
+      <div className="ec-chrome">
+        <div className="ec-chrome-left">
+          <span className="ec-glyph ec-glyph-apple" aria-hidden>A</span>
+          <span className="ec-app-name">Inbox</span>
+          <span className="ec-app-sub">iCloud</span>
+        </div>
+        <div className="ec-chrome-right">
+          <span className="ec-chrome-count">12</span>
+        </div>
+      </div>
+      <div className="ec-thread">
+        <div className="ec-thread-row">
+          <span className="ec-thread-blue" aria-hidden />
+          <span className="ec-thread-from">Dr. Marek Tóth</span>
+          <span className="ec-thread-time">Yesterday</span>
+        </div>
+        <div className="ec-thread-subj">Tax counsel · clause 14.2</div>
+      </div>
+      <div className="ec-body">
+        <p>Anna, the amendment is acceptable. Proceeding to sign.</p>
+        <p className="ec-signoff">Best regards,</p>
+        <CounselMini />
+      </div>
+    </div>
+  );
+}
+
+/* Mini Counsel Centered signature */
+function CounselMini() {
+  return (
+    <div className="tplm tplm-counsel">
+      <span className="tplm-av tplm-av-round tplm-av-md">
+        {/* eslint-disable-next-line @next/next/no-img-element */}
+        <img
+          src="https://images.unsplash.com/photo-1560250097-0b93528c311a?w=120&h=120&q=85&auto=format&fit=crop&crop=faces"
+          alt=""
+          width={42}
+          height={42}
+        />
       </span>
-      {label}
-    </span>
+      <div className="tplm-counsel-name">Dr. Marek Tóth</div>
+      <div className="tplm-counsel-title">Senior Tax Counsel</div>
+      <div className="tplm-counsel-firm">Northwave Legal, London</div>
+      <div className="tplm-counsel-rule" aria-hidden />
+      <div className="tplm-counsel-rows">
+        <div>
+          <EnvelopeSimple weight="regular" size={9} />
+          marek@northwave.legal
+        </div>
+        <div>
+          <Phone weight="regular" size={9} />
+          +44 20 7946 0382
+        </div>
+        <div>
+          <GlobeSimple weight="regular" size={9} />
+          northwave.legal
+        </div>
+      </div>
+    </div>
   );
 }
