@@ -129,6 +129,7 @@ function EditorMockup() {
               <ArrowLeft weight="bold" size={10} />
               All signatures
             </span>
+            <span className="lp-bc-mock-divider-v" aria-hidden />
             <span className="lp-bc-mock-logo">
               <span className="lp-bc-mock-logo-mark" aria-hidden>
                 <svg viewBox="0 0 240 240" xmlns="http://www.w3.org/2000/svg">
@@ -138,7 +139,9 @@ function EditorMockup() {
               </span>
               Siggy
             </span>
-            <span className="lp-bc-mock-signame">Brand director signature</span>
+            <span className="lp-bc-mock-signame" aria-hidden>
+              Brand director signature
+            </span>
           </div>
           <div className="lp-bc-mock-head-right">
             <span className="lp-bc-mock-saved">
@@ -154,7 +157,7 @@ function EditorMockup() {
 
         {/* 3-pane body */}
         <div className="lp-bc-mock-body">
-          {/* Left rail */}
+          {/* Left rail — matches the real editor's grouped nav */}
           <aside className="lp-bc-mock-rail">
             <span className="lp-bc-mock-rail-group">Design</span>
             <RailItem icon={Stack} label="Templates" />
@@ -168,53 +171,85 @@ function EditorMockup() {
             <RailItem icon={TextAa} label="Typography" />
           </aside>
 
-          {/* Main */}
+          {/* Main — tinted bg, card-wrapped form, like the real editor */}
           <main className="lp-bc-mock-main">
-            <div className="lp-bc-mock-main-eyebrow">Content</div>
-            <div className="lp-bc-mock-main-title">Identity</div>
-            <div className="lp-bc-mock-fields">
-              <MockField label="Full name" value="Sara Klein" />
-              <MockField label="Job title" value="Brand Director" />
-              <MockField label="Company" value="Northwave" />
-              <MockField label="Pronouns" value="she / her" />
+            <div className="lp-bc-mock-main-head">
+              <div className="lp-bc-mock-main-eyebrow">Content</div>
+              <div className="lp-bc-mock-main-title">Identity</div>
+              <div className="lp-bc-mock-main-sub">
+                Who you are. The basics that show up first.
+              </div>
+            </div>
+
+            <div className="lp-bc-mock-card">
+              <div className="lp-bc-mock-card-title">
+                <span className="lp-bc-mock-card-ico" aria-hidden>
+                  <UserIcon weight="fill" size={10} />
+                </span>
+                Basics
+              </div>
+              <div className="lp-bc-mock-fields">
+                <MockField label="Full name" value="Sara Klein" focused />
+                <MockField label="Job title" value="Brand Director" />
+                <MockField label="Company" value="Northwave" />
+                <MockField label="Pronouns" value="she / her" />
+              </div>
             </div>
           </main>
 
-          {/* Right preview */}
+          {/* Right preview — real-feeling client tabs and mail frame */}
           <aside className="lp-bc-mock-preview">
             <div className="lp-bc-mock-preview-label">
               <span>Live preview</span>
-              <span className="dim">Gmail · Outlook · Apple</span>
+              <span className="dim">3 clients</span>
             </div>
-            <div className="lp-bc-mock-preview-tabs">
-              <span className="active">Gmail</span>
-              <span>Outlook</span>
-              <span>Apple</span>
+            <div className="lp-bc-mock-preview-tabs" role="tablist">
+              <span className="tab active">
+                <span className="tab-glyph gmail" aria-hidden>M</span>
+                Gmail
+              </span>
+              <span className="tab">
+                <span className="tab-glyph outlook" aria-hidden>O</span>
+              </span>
+              <span className="tab">
+                <span className="tab-glyph apple" aria-hidden>A</span>
+              </span>
             </div>
             <div className="lp-bc-mock-preview-frame">
               <div className="lp-bc-mock-preview-mailhead">
                 <span className="from">Sara Klein</span>
+                <span className="time">10:42</span>
                 <span className="subj">Re: Q3 brand refresh</span>
               </div>
               <div className="lp-bc-mock-preview-body">
-                <p>Thanks Marek, the new lockup looks great. Let&apos;s ship.</p>
+                <p>Thanks Marek, the new lockup looks great. Let&apos;s ship Friday.</p>
                 <p className="signoff">Best,</p>
                 <div className="lp-bc-mock-sig">
                   <div className="lp-bc-mock-sig-row">
-                    <span className="lp-bc-mock-sig-av" aria-hidden>SK</span>
+                    <span className="lp-bc-mock-sig-av" aria-hidden>
+                      {/* eslint-disable-next-line @next/next/no-img-element */}
+                      <img
+                        src="https://images.unsplash.com/photo-1573497019940-1c28c88b4f3e?w=80&h=80&q=85&auto=format&fit=crop&crop=faces"
+                        alt=""
+                        width={24}
+                        height={24}
+                      />
+                    </span>
                     <div className="lp-bc-mock-sig-col">
                       <span className="n">Sara Klein</span>
-                      <span className="t">Brand Director · Northwave</span>
-                      <span className="c">sara@northwave.io</span>
+                      <span className="t">Brand Director, Northwave</span>
                     </div>
                   </div>
                   <span className="lp-bc-mock-sig-rule" aria-hidden />
-                  <div className="lp-bc-mock-sig-foot">
-                    <span className="lp-bc-mock-sig-social" aria-hidden>
-                      <LinkedinLogo weight="fill" size={9} />
-                    </span>
-                    <span className="lp-bc-mock-sig-social" aria-hidden>
-                      <XLogo weight="fill" size={9} />
+                  <div className="lp-bc-mock-sig-meta">
+                    <span>sara@northwave.io</span>
+                    <span className="lp-bc-mock-sig-foot">
+                      <span className="lp-bc-mock-sig-social" aria-hidden>
+                        <LinkedinLogo weight="fill" size={9} />
+                      </span>
+                      <span className="lp-bc-mock-sig-social" aria-hidden>
+                        <XLogo weight="fill" size={9} />
+                      </span>
                     </span>
                   </div>
                 </div>
@@ -222,7 +257,7 @@ function EditorMockup() {
             </div>
             <div className="lp-bc-mock-preview-foot">
               <CheckCircle weight="fill" size={10} />
-              Identical in Outlook desktop.
+              Pixel&#8209;identical in Outlook desktop.
             </div>
           </aside>
         </div>
@@ -258,12 +293,25 @@ function RailItem({
 
 /* ────────────────────────────────────────────────────────────────
    MockField — one labelled form row in the Identity section.
+   ``focused`` adds a subtle accent ring + blinking caret to imply the
+   user is currently editing this field.
    ──────────────────────────────────────────────────────────────── */
-function MockField({ label, value }: { label: string; value: string }) {
+function MockField({
+  label,
+  value,
+  focused,
+}: {
+  label: string;
+  value: string;
+  focused?: boolean;
+}) {
   return (
-    <div className="lp-bc-mock-field">
+    <div className={`lp-bc-mock-field${focused ? " is-focused" : ""}`}>
       <span className="lp-bc-mock-field-label">{label}</span>
-      <span className="lp-bc-mock-field-input">{value}</span>
+      <span className="lp-bc-mock-field-input">
+        {value}
+        {focused ? <span className="lp-bc-mock-field-caret" aria-hidden /> : null}
+      </span>
     </div>
   );
 }
