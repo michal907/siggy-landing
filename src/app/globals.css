@@ -8742,6 +8742,14 @@ footer.lp-footer-legacy {
    One large, smooth radial wash from the bottom-center plus a
    subtle linear gradient overlay for depth. No discrete blob
    shapes — reads as ambient green floor light. */
+/* ── Hero mesh — animated lava blobs, Framer "lava" style ───────
+   Five large, heavily-blurred coloured blobs drift slowly across a
+   deep ink base. Brand green leads; cyan-green, magenta, warm
+   orange, and electric teal accent it for the molten feel. Each
+   blob has its own duration and delay so the composition never
+   repeats the same pattern. Heavy blur + screen-style overlap
+   gives the "lava" bleed.
+   ────────────────────────────────────────────────────────────── */
 .lp-mesh {
   position: absolute;
   inset: 0;
@@ -8749,51 +8757,110 @@ footer.lp-footer-legacy {
   overflow: hidden;
   z-index: -2;
   background:
-    /* 1. Dominant horizon bloom — bottom-center, brand green, much
-       stronger than before so it actually reads as light, not haze. */
-    radial-gradient(
-      ellipse 140% 80% at 50% 118%,
-      oklch(82% 0.21 130 / 0.62) 0%,
-      oklch(80% 0.20 130 / 0.36) 14%,
-      oklch(78% 0.19 130 / 0.18) 30%,
-      oklch(78% 0.19 130 / 0.06) 50%,
-      transparent 70%
-    ),
-    /* 2. Top-right cyan-green accent — shifts hue toward 168 so the
-       composition has two distinct light temperatures, not one. */
-    radial-gradient(
-      ellipse 52% 46% at 94% 2%,
-      oklch(80% 0.17 168 / 0.34) 0%,
-      oklch(78% 0.16 168 / 0.12) 30%,
-      transparent 56%
-    ),
-    /* 3. Mid-left green echo — breaks the symmetry of #1 + #2 and
-       prevents the gradient from looking like a single beam. */
-    radial-gradient(
-      ellipse 38% 50% at 4% 42%,
-      oklch(80% 0.20 130 / 0.22) 0%,
-      oklch(78% 0.19 130 / 0.07) 35%,
-      transparent 60%
-    ),
-    /* 4. Diagonal aurora sweep — faint band across the upper third,
-       crosses the headline area subtly to add lateral movement. */
-    linear-gradient(
-      108deg,
-      transparent 32%,
-      oklch(82% 0.18 145 / 0.06) 48%,
-      oklch(76% 0.16 175 / 0.08) 58%,
-      transparent 75%
-    ),
-    /* 5. Base — multi-stop linear with hue drift from blue ink at top
-       to green-tinted ink at bottom. Carries the dark surface beneath
-       all the bloom layers. */
-    linear-gradient(
-      180deg,
-      oklch(11% 0.022 250) 0%,
-      oklch(13% 0.022 245) 28%,
-      oklch(14% 0.024 200) 55%,
-      oklch(16% 0.028 150) 100%
-    );
+    radial-gradient(ellipse 70% 50% at 50% 100%, oklch(13% 0.020 200) 0%, transparent 60%),
+    linear-gradient(180deg, oklch(10% 0.022 250) 0%, oklch(12% 0.022 240) 100%);
+  isolation: isolate;
+}
+.lp-mesh-blob {
+  position: absolute;
+  display: block;
+  border-radius: 50%;
+  filter: blur(110px);
+  will-change: transform;
+  mix-blend-mode: screen;
+  opacity: 0.85;
+}
+
+/* Blob 1 — brand green, big, top-left → drifts down-right */
+.lp-mesh-blob-1 {
+  width: 720px;
+  height: 720px;
+  top: -18%;
+  left: -12%;
+  background: oklch(78% 0.19 130);
+  animation: lp-blob-1 28s cubic-bezier(0.45, 0, 0.55, 1) infinite;
+}
+
+/* Blob 2 — magenta pink, top-right → drifts down-left */
+.lp-mesh-blob-2 {
+  width: 580px;
+  height: 580px;
+  top: -10%;
+  right: -8%;
+  background: oklch(72% 0.22 335);
+  animation: lp-blob-2 34s cubic-bezier(0.45, 0, 0.55, 1) infinite;
+  animation-delay: -6s;
+}
+
+/* Blob 3 — warm orange-red, bottom-center → drifts up-right */
+.lp-mesh-blob-3 {
+  width: 760px;
+  height: 760px;
+  bottom: -30%;
+  left: 22%;
+  background: oklch(75% 0.20 45);
+  animation: lp-blob-3 38s cubic-bezier(0.45, 0, 0.55, 1) infinite;
+  animation-delay: -14s;
+}
+
+/* Blob 4 — electric teal-cyan, mid-right → drifts up-left */
+.lp-mesh-blob-4 {
+  width: 520px;
+  height: 520px;
+  top: 32%;
+  right: -10%;
+  background: oklch(72% 0.18 200);
+  animation: lp-blob-4 32s cubic-bezier(0.45, 0, 0.55, 1) infinite;
+  animation-delay: -20s;
+}
+
+/* Blob 5 — saturated lime, mid-left → orbits */
+.lp-mesh-blob-5 {
+  width: 460px;
+  height: 460px;
+  top: 40%;
+  left: 8%;
+  background: oklch(82% 0.22 128);
+  animation: lp-blob-5 26s cubic-bezier(0.45, 0, 0.55, 1) infinite;
+  animation-delay: -10s;
+  opacity: 0.7;
+}
+
+@keyframes lp-blob-1 {
+  0%   { transform: translate(0, 0) scale(1); }
+  33%  { transform: translate(180px, 120px) scale(1.12); }
+  66%  { transform: translate(60px, 220px) scale(0.92); }
+  100% { transform: translate(0, 0) scale(1); }
+}
+@keyframes lp-blob-2 {
+  0%   { transform: translate(0, 0) scale(1); }
+  35%  { transform: translate(-150px, 180px) scale(1.18); }
+  70%  { transform: translate(-220px, 60px) scale(0.94); }
+  100% { transform: translate(0, 0) scale(1); }
+}
+@keyframes lp-blob-3 {
+  0%   { transform: translate(0, 0) scale(1); }
+  40%  { transform: translate(180px, -200px) scale(0.88); }
+  75%  { transform: translate(-120px, -260px) scale(1.14); }
+  100% { transform: translate(0, 0) scale(1); }
+}
+@keyframes lp-blob-4 {
+  0%   { transform: translate(0, 0) scale(1); }
+  30%  { transform: translate(-220px, -160px) scale(1.10); }
+  65%  { transform: translate(-80px, -260px) scale(0.94); }
+  100% { transform: translate(0, 0) scale(1); }
+}
+@keyframes lp-blob-5 {
+  0%   { transform: translate(0, 0) scale(1); }
+  25%  { transform: translate(120px, -100px) scale(1.18); }
+  50%  { transform: translate(240px, 80px) scale(0.92); }
+  75%  { transform: translate(80px, 180px) scale(1.06); }
+  100% { transform: translate(0, 0) scale(1); }
+}
+
+/* Respect users who opted out of motion. */
+@media (prefers-reduced-motion: reduce) {
+  .lp-mesh-blob { animation: none !important; }
 }
 
 /* ── Email clients strip inside the hero (shared dark bg) ─── */

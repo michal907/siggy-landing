@@ -126,7 +126,13 @@ export default function Home() {
         {/* ── HERO — dark, signature cluster, vertically centered ── */}
         <section className="lp-hero lp-hero-night">
           {/* Smooth atmospheric wash — no discrete blobs */}
-          <div className="lp-mesh" aria-hidden="true" />
+          <div className="lp-mesh" aria-hidden="true">
+            <span className="lp-mesh-blob lp-mesh-blob-1" />
+            <span className="lp-mesh-blob lp-mesh-blob-2" />
+            <span className="lp-mesh-blob lp-mesh-blob-3" />
+            <span className="lp-mesh-blob lp-mesh-blob-4" />
+            <span className="lp-mesh-blob lp-mesh-blob-5" />
+          </div>
           <div className="container lp-hero-inner">
             <div className="lp-hero-text">
               <LovedByPros />
