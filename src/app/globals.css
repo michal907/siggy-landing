@@ -8789,9 +8789,8 @@ footer.lp-footer-legacy {
 .lp-mesh-blob {
   position: absolute;
   display: block;
-  border-radius: 50%;
   filter: blur(120px);
-  will-change: transform;
+  will-change: transform, border-radius;
   mix-blend-mode: screen;
 }
 
@@ -8803,7 +8802,10 @@ footer.lp-footer-legacy {
   left: 8%;
   background: oklch(78% 0.19 130);
   opacity: 0.47;
-  animation: lp-blob-1 28s cubic-bezier(0.45, 0, 0.55, 1) infinite;
+  border-radius: 60% 40% 50% 50% / 50% 60% 40% 50%;
+  animation:
+    lp-blob-1 32s cubic-bezier(0.42, 0, 0.58, 1) infinite,
+    lp-morph-1 18s cubic-bezier(0.42, 0, 0.58, 1) infinite;
 }
 
 /* Blob 2 — deeper saturated green, bottom-center, molten core */
@@ -8814,8 +8816,11 @@ footer.lp-footer-legacy {
   left: 36%;
   background: oklch(66% 0.21 138);
   opacity: 0.41;
-  animation: lp-blob-2 34s cubic-bezier(0.45, 0, 0.55, 1) infinite;
-  animation-delay: -8s;
+  border-radius: 50% 50% 40% 60% / 60% 40% 60% 40%;
+  animation:
+    lp-blob-2 40s cubic-bezier(0.42, 0, 0.58, 1) infinite,
+    lp-morph-2 22s cubic-bezier(0.42, 0, 0.58, 1) infinite;
+  animation-delay: -8s, -5s;
 }
 
 /* Blob 3 — bright lime highlight, bottom-right */
@@ -8826,27 +8831,64 @@ footer.lp-footer-legacy {
   right: 6%;
   background: oklch(82% 0.22 128);
   opacity: 0.38;
-  animation: lp-blob-3 30s cubic-bezier(0.45, 0, 0.55, 1) infinite;
-  animation-delay: -16s;
+  border-radius: 55% 45% 60% 40% / 45% 55% 50% 50%;
+  animation:
+    lp-blob-3 36s cubic-bezier(0.42, 0, 0.58, 1) infinite,
+    lp-morph-3 20s cubic-bezier(0.42, 0, 0.58, 1) infinite;
+  animation-delay: -16s, -10s;
 }
 
+/* Position + scale + rotate drift. Many keyframes for organic flow. */
 @keyframes lp-blob-1 {
-  0%   { transform: translate(0, 0) scale(1); }
-  33%  { transform: translate(140px, -60px) scale(1.10); }
-  66%  { transform: translate(60px, 40px) scale(0.94); }
-  100% { transform: translate(0, 0) scale(1); }
+  0%   { transform: translate(0, 0) scale(1) rotate(0deg); }
+  15%  { transform: translate(70px, -30px) scale(1.06) rotate(8deg); }
+  30%  { transform: translate(150px, -70px) scale(1.14) rotate(18deg); }
+  48%  { transform: translate(110px, 10px) scale(1.08) rotate(28deg); }
+  62%  { transform: translate(40px, 60px) scale(0.92) rotate(20deg); }
+  78%  { transform: translate(-30px, 30px) scale(0.96) rotate(8deg); }
+  100% { transform: translate(0, 0) scale(1) rotate(0deg); }
 }
 @keyframes lp-blob-2 {
-  0%   { transform: translate(0, 0) scale(1); }
-  35%  { transform: translate(-110px, -100px) scale(1.14); }
-  70%  { transform: translate(80px, -40px) scale(0.92); }
-  100% { transform: translate(0, 0) scale(1); }
+  0%   { transform: translate(0, 0) scale(1) rotate(0deg); }
+  18%  { transform: translate(-60px, -50px) scale(1.08) rotate(-10deg); }
+  35%  { transform: translate(-130px, -110px) scale(1.18) rotate(-22deg); }
+  52%  { transform: translate(-40px, -130px) scale(1.10) rotate(-12deg); }
+  68%  { transform: translate(80px, -60px) scale(0.90) rotate(6deg); }
+  84%  { transform: translate(30px, -10px) scale(0.96) rotate(2deg); }
+  100% { transform: translate(0, 0) scale(1) rotate(0deg); }
 }
 @keyframes lp-blob-3 {
-  0%   { transform: translate(0, 0) scale(1); }
-  40%  { transform: translate(-130px, -80px) scale(1.12); }
-  75%  { transform: translate(40px, -120px) scale(0.96); }
-  100% { transform: translate(0, 0) scale(1); }
+  0%   { transform: translate(0, 0) scale(1) rotate(0deg); }
+  17%  { transform: translate(-70px, -40px) scale(1.06) rotate(-8deg); }
+  34%  { transform: translate(-150px, -90px) scale(1.14) rotate(-18deg); }
+  50%  { transform: translate(-90px, -140px) scale(1.10) rotate(-28deg); }
+  66%  { transform: translate(20px, -110px) scale(0.94) rotate(-14deg); }
+  82%  { transform: translate(40px, -30px) scale(0.98) rotate(-4deg); }
+  100% { transform: translate(0, 0) scale(1) rotate(0deg); }
+}
+
+/* Border-radius morph — true molten shape change, decoupled from
+   position so the two motions never line up. */
+@keyframes lp-morph-1 {
+  0%   { border-radius: 60% 40% 50% 50% / 50% 60% 40% 50%; }
+  25%  { border-radius: 45% 55% 65% 35% / 55% 45% 60% 40%; }
+  50%  { border-radius: 50% 50% 40% 60% / 60% 50% 45% 55%; }
+  75%  { border-radius: 65% 35% 50% 50% / 40% 55% 50% 60%; }
+  100% { border-radius: 60% 40% 50% 50% / 50% 60% 40% 50%; }
+}
+@keyframes lp-morph-2 {
+  0%   { border-radius: 50% 50% 40% 60% / 60% 40% 60% 40%; }
+  25%  { border-radius: 60% 40% 55% 45% / 45% 55% 50% 50%; }
+  50%  { border-radius: 40% 60% 50% 50% / 55% 45% 55% 45%; }
+  75%  { border-radius: 55% 45% 60% 40% / 50% 60% 40% 50%; }
+  100% { border-radius: 50% 50% 40% 60% / 60% 40% 60% 40%; }
+}
+@keyframes lp-morph-3 {
+  0%   { border-radius: 55% 45% 60% 40% / 45% 55% 50% 50%; }
+  25%  { border-radius: 45% 55% 50% 50% / 60% 40% 55% 45%; }
+  50%  { border-radius: 60% 40% 45% 55% / 50% 60% 40% 50%; }
+  75%  { border-radius: 50% 50% 55% 45% / 55% 45% 60% 40%; }
+  100% { border-radius: 55% 45% 60% 40% / 45% 55% 50% 50%; }
 }
 
 /* Respect users who opted out of motion. */
