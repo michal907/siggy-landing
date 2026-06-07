@@ -23,12 +23,10 @@ const APP_HREF = "/app";
 /* ────────────────────────────────────────────────────────────────
    BenefitsCompare — 2-column proof section.
 
-   LEFT: section title + a faithful mockup of the real editor at
-   /app/editor (header strip, three-pane body with grouped nav rail,
-   Identity form, and a multi-client live preview).
-   RIGHT: four plain benefit headlines (no subtext), then CTA. The
-   honest competitor comparison lives in its own section below
-   (CompetitorComparison).
+   LEFT (60%): the editor mockup, standing alone as the visual proof.
+   RIGHT (40%): pill, headline, four benefit headlines, accent rule,
+   CTA with three inline reassurances. Vertically centered so the
+   text block sits comfortably alongside the taller mockup.
    ──────────────────────────────────────────────────────────────── */
 
 export function BenefitsCompare() {
@@ -36,25 +34,28 @@ export function BenefitsCompare() {
     <section className="lp-bc lp-section-cream" id="why">
       <div className="container">
         <div className="lp-bc-grid">
-          {/* ── LEFT ─────────────────────────────────────── */}
+          {/* ── LEFT (60%): mockup ──────────────────────── */}
           <div className="lp-bc-left">
+            <EditorMockup />
+          </div>
+
+          {/* ── RIGHT (40%): pill + h2 + benefits + CTA ── */}
+          <div className="lp-bc-right">
             <span className="lp-pill lp-pill-light">
               <span className="lp-pill-ico" aria-hidden>
                 <Sparkle weight="fill" size={11} />
               </span>
               Why Siggy
             </span>
-            <h2 className="lp-section-title">
+
+            <h2 className="lp-section-title lp-bc-headline">
               Built for inboxes,
               <br />
               <span className="lp-accent">not for slideshows.</span>
             </h2>
 
-            <EditorMockup />
-          </div>
+            <span className="lp-bc-rule" aria-hidden />
 
-          {/* ── RIGHT ────────────────────────────────────── */}
-          <div className="lp-bc-right">
             <ol className="lp-bc-benefits">
               <li>
                 <span className="lp-bc-benefits-num">01</span>
@@ -80,7 +81,11 @@ export function BenefitsCompare() {
                 Start free
                 <ArrowRight weight="bold" size={14} className="arr" />
               </Link>
-              <span className="lp-bc-cta-aside">Free forever, no card.</span>
+              <ul className="lp-bc-reassure" aria-label="Pricing reassurance">
+                <li>Free forever</li>
+                <li>No card</li>
+                <li>2&#8209;min setup</li>
+              </ul>
             </div>
           </div>
         </div>

@@ -10153,16 +10153,16 @@ footer.lp-footer-legacy {
 }
 .lp-bc-grid {
   display: grid;
-  grid-template-columns: minmax(0, 1.12fr) minmax(0, 1fr);
-  gap: 72px;
-  align-items: start;
+  /* 60 / 40 split — mockup carries the visual proof, text column
+     holds pill + headline + benefits + CTA. */
+  grid-template-columns: minmax(0, 1.5fr) minmax(0, 1fr);
+  gap: 64px;
+  align-items: center;
 }
 
-/* ── LEFT column ───────────────────────────────────────────── */
-.lp-bc-left .lp-pill { margin-bottom: 18px; }
-.lp-bc-left .lp-section-title {
-  margin: 0 0 36px;
-  font-size: clamp(36px, 4.4vw, 56px);
+/* ── LEFT column (mockup only) ─────────────────────────────── */
+.lp-bc-left {
+  min-width: 0;
 }
 
 /* ── App mockup ────────────────────────────────────────────── */
@@ -10556,18 +10556,37 @@ footer.lp-footer-legacy {
   font-style: italic;
 }
 
-/* ── RIGHT column ──────────────────────────────────────────── */
+/* ── RIGHT column (pill + h2 + benefits + CTA) ─────────────── */
 .lp-bc-right {
   display: flex;
   flex-direction: column;
-  gap: 44px;
-  padding-top: 12px;
+  gap: 0;
+  min-width: 0;
+}
+.lp-bc-right .lp-pill { margin-bottom: 16px; align-self: flex-start; }
+
+/* Headline sized for the narrower 40% column. */
+.lp-bc-headline {
+  font-size: clamp(28px, 3.4vw, 44px);
+  line-height: 1.04;
+  letter-spacing: -0.034em;
+  margin: 0 0 18px;
+}
+
+/* Accent rule between headline and the benefits list. */
+.lp-bc-rule {
+  display: block;
+  width: 36px;
+  height: 2px;
+  background: var(--accent);
+  border-radius: 2px;
+  margin: 0 0 22px;
 }
 
 /* Plain benefit titles (no subtext) */
 .lp-bc-benefits {
   list-style: none;
-  margin: 0;
+  margin: 0 0 28px;
   padding: 0;
   display: flex;
   flex-direction: column;
@@ -10575,15 +10594,15 @@ footer.lp-footer-legacy {
 }
 .lp-bc-benefits li {
   display: grid;
-  grid-template-columns: 44px 1fr;
+  grid-template-columns: 40px 1fr;
   align-items: center;
-  gap: 18px;
-  padding: 22px 0;
+  gap: 14px;
+  padding: 16px 0;
   border-top: 1px solid oklch(20% 0.018 250 / 0.10);
   font-family: var(--siggy-font-display);
   font-weight: 600;
-  font-size: clamp(22px, 2.1vw, 28px);
-  letter-spacing: -0.026em;
+  font-size: clamp(19px, 1.8vw, 24px);
+  letter-spacing: -0.024em;
   line-height: 1.05;
   color: var(--ink);
 }
@@ -10605,17 +10624,43 @@ footer.lp-footer-legacy {
 /* ── CTA row ───────────────────────────────────────────────── */
 .lp-bc-cta-row {
   display: flex;
-  align-items: center;
-  gap: 16px;
-  flex-wrap: wrap;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 14px;
 }
 .lp-bc-cta svg.arr {
   transition: transform 240ms cubic-bezier(0.22, 1, 0.36, 1);
 }
 .lp-bc-cta:hover svg.arr { transform: translateX(3px); }
-.lp-bc-cta-aside {
-  font-size: 13px;
-  color: oklch(20% 0.018 250 / 0.6);
+
+/* Three inline reassurances under the CTA: Free forever / No card /
+   2-min setup. Set with tiny green check-like bullets between. */
+.lp-bc-reassure {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: inline-flex;
+  flex-wrap: wrap;
+  gap: 6px 14px;
+  font-size: 12.5px;
+  font-weight: 500;
+  color: oklch(20% 0.018 250 / 0.62);
+}
+.lp-bc-reassure li {
+  position: relative;
+  padding-left: 14px;
+}
+.lp-bc-reassure li::before {
+  content: '';
+  position: absolute;
+  left: 0;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: var(--accent);
+  box-shadow: 0 0 0 3px oklch(78% 0.19 130 / 0.16);
 }
 
 /* ── Responsive ─────────────────────────────────────────────── */
@@ -10625,7 +10670,9 @@ footer.lp-footer-legacy {
 }
 @media (max-width: 880px) {
   .lp-bc { padding: 80px 0 88px; }
-  .lp-bc-grid { grid-template-columns: 1fr; gap: 56px; }
+  .lp-bc-grid { grid-template-columns: 1fr; gap: 48px; align-items: start; }
+  .lp-bc-left { order: 2; }
+  .lp-bc-right { order: 1; }
   .lp-bc-mock-body { grid-template-columns: 110px minmax(0, 1fr) 160px; }
   .lp-bc-mock-fields { grid-template-columns: 1fr 1fr; }
 }
